@@ -36,7 +36,7 @@ var {
   @extend .base-beta;
   @media( min-width: 768px ) {
     @include base-typescale(
-      map-get($base-scale, base-giga),
+      map-get($base-scale, base-mega),
       $base-font-base,
       $base-typescale-unit,
       $base-measure
@@ -44,12 +44,12 @@ var {
   }
 }
 
-.sub-title {
+.title-display {
   @extend .base-gamma;
 
   @media( min-width: 768px ) {
     @include base-typescale(
-      map-get($base-scale, base-mega),
+      map-get($base-scale, base-alpha),
       $base-font-base,
       $base-typescale-unit,
       $base-measure

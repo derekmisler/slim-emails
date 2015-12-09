@@ -4,8 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
-var eslint = require('gulp-eslint');
-var jasmine = require('gulp-jasmine-phantom');
+// var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
@@ -13,9 +12,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 
-gulp.task('serve', ['copy-html', 'copy-images', 'scripts-dist', 'styles', 'lint'], function() {
+gulp.task('serve', ['copy-html', 'copy-images', 'scripts-dist', 'styles'], function() {
   gulp.watch('stylesheets/**/*.scss', ['styles']);
-  gulp.watch('js/**/*.js', ['lint']);
+  // gulp.watch('js/**/*.js', ['lint']);
   gulp.watch('js/**/*.js', ['scripts-dist']);
   gulp.watch('*.html', ['copy-html']);
   gulp.watch('./dist/**/*').on('change', browserSync.reload);

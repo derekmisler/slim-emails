@@ -5,11 +5,11 @@
   "author": "Derek Misler <derekmisler@gmail.com>",
   "dependencies": {
     "browser-sync": "^2.10.0",
-    "eslint": "^1.10.3",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.1",
     "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^1.1.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
