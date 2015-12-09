@@ -1,0 +1,91 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+/// Copy text color
+/// @type Color
+$text-color: #595241 !default;
+$brand-color: #ACCFCC !default;
+
+$light-grey: #ffffff !default;
+$mid-grey: #EBDEC7 !default;
+$dark-grey: #444 !default;
+
+$bg-color: $light-grey;
+
+$link-color: $brand-color;
+$link-hover-color: darken($brand-color, 10%);
+
+// General base styles for type
+
+$base-serif-boolean: true !default;
+$base-custom-font: false !default;
+$base-font-family: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$base-font-weight: normal !default;
+$base-line-height: 1.65 !default;
+$base-font-size: 112.5 !default;
+$base-font-base: 20 * ($base-font-size/100) !default;
+$base-measure: $base-font-base * $base-line-height;
+$base-prefixes: -webkit-, -moz-, -ms-, '' !default;
+
+$heading-font-family: 'Libre Baskerville', serif !default;
+$heading-font-weight: 400;
+$heading-line-height: 1;
+$heading-color: $brand-color;
+
+$base-scale: (
+  base-tera: 117,
+  base-giga: 90,
+  base-mega: 72,
+  base-alpha: 60,
+  base-beta: 48,
+  base-gamma: 36,
+  base-delta: 24,
+  base-epsilon: 21,
+  base-zeta: 18,
+) !default;
+
+$base-headings: (
+  h1: base-mega,
+  h2: base-alpha,
+  h3: base-beta,
+  h4: base-gamma,
+  h5: base-delta,
+  h6: base-zeta
+) !default;
+
+$base-typescale-unit:rem;
+
+// $Pull-Quotes Variables
+// -------------------------------------//
+
+$pull-quote-fontsize: 4em !default;
+$pull-quote-opacity: 0.5 !default;
+$pull-quote-color: $mid-grey !default;
+
+
+
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @see {mixin} respond-to
+$breakpoints: (
+  'small': (min-width: 320px),
+  'medium': (min-width: 768px),
+  'large': (min-width: 1024px),
+) !default;
+$max-width:     1200px !default;
+$spacing-unit:  30px;
+$block-grid:    12;
+
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: './' !default;

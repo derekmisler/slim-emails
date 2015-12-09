@@ -1,0 +1,31 @@
+@mixin columnCalc($columns) { 
+  width: -webkit-calc((100% / #{$block-grid}) * #{$columns} - #{$spacing-unit/2});
+  width:         calc((100% / #{$block-grid}) * #{$columns} - #{$spacing-unit/2});
+}
+@mixin columns-html-classes() {
+  @for $i from 1 through $block-grid {
+    .columns-#{$i} {
+      @include columnCalc($i)
+    }
+  }
+}
+
+[class*="columns-"] {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: ($spacing-unit / 2);
+}
+
+@include respond-to('medium') {
+  [class*="columns-"] {
+    margin: 0 ($spacing-unit / 2);
+  }
+  [class*="columns-"]:first-child {
+    margin-left: 0;
+  }
+  [class*="columns-"]:last-child {
+    margin-right: 0;
+  }
+  @include columns-html-classes();
+}

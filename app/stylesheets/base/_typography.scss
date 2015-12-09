@@ -1,0 +1,87 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  font-family: $base-font-family;
+  @extend %base-breakword;
+  @extend %base-ot--onum;
+  @include base-hyphens(auto);
+}
+input,
+abbr,
+acronym,
+blockquote,
+code,
+kbd,
+q,
+samp,
+var {
+  @include base-hyphens(none);
+}
+
+%base-hN {
+  text-rendering: optimizeLegibility; // voodoo to enable ligatures and kerning
+  line-height: 1; // this fixes huge spaces when a heading wraps onto two lines
+  margin-top: 0;
+}
+
+@include base-headings;
+@include base-headings-style;
+
+.title {
+  @extend .base-beta;
+  @media( min-width: 768px ) {
+    @include base-typescale(
+      map-get($base-scale, base-giga),
+      $base-font-base,
+      $base-typescale-unit,
+      $base-measure
+    );
+  }
+}
+
+.sub-title {
+  @extend .base-gamma;
+
+  @media( min-width: 768px ) {
+    @include base-typescale(
+      map-get($base-scale, base-mega),
+      $base-font-base,
+      $base-typescale-unit,
+      $base-measure
+    );
+  }
+}
+
+
+h1 {
+  text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 $mid-grey;
+  @media( min-width: 768px ) {
+    text-shadow: 2px 2px 0 $bg-color, 3px 3px 0 $mid-grey;
+  }
+}
+h2 {
+  text-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
+  @media( min-width: 768px ) {
+    text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 $mid-grey;
+  }
+}
+h2:before,
+h2:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 1px;
+  background: $heading-color;
+  box-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
+  margin: 0 $spacing-unit/2;
+  width: 15%;
+  @media( min-width: 768px ) {
+    margin: 0 $spacing-unit;
+    width: 25%;
+  }
+}

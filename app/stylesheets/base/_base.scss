@@ -1,0 +1,85 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+// $Global Styles
+// -------------------------------------//
+
+html {
+  box-sizing: border-box;
+  font: $base-font-weight #{$base-font-size + "%"}/#{$base-line-height} $base-font-family;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+} 
+
+body {
+
+}
+
+/* body::after {
+  content: "";
+  background: url($img-url + 'subtle_grunge.png');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+} */
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+// $Wordwrap
+// -------------------------------------//
+// Control word wrapping and breaks in your text.
+//
+// 'normal'                     Lines may only break at normal word break points.
+// 'break-word'                 Unbreakable words may be broken at arbitrary points.
+//
+// @example                     article { @extend %base-breakword; }
+
+%base-breakword {
+  word-wrap: break-word;
+}
+
+%base-normal-wrap {
+  word-wrap: normal;
+}
+
+%base-inherit-wrap {
+  word-wrap: auto;
+}
+
+// $OpenType
+// -------------------------------------//
+// Control OpenType feature settings where desired.
+//
+// @use
+// smallcaps                body { @extend %base-ot--smcp; }
+// text figures             body { @extend %base-ot--onum; }
+
+%base-ot--smcp {
+  @each $prefix in $base-prefixes {
+    #{$prefix}font-feature-settings: "smcp";
+  }
+}
+
+%base-ot--onum {
+  @each $prefix in $base-prefixes {
+    #{$prefix}font-feature-settings: 'onum';
+  }
+}

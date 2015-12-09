@@ -1,0 +1,29 @@
+{
+  "name": "web-forms-udacity",
+  "version": "0.1.0",
+  "description": "Building High Conversion Web Forms",
+  "author": "Derek Misler <derekmisler@gmail.com>",
+  "dependencies": {
+    "browser-sync": "^2.10.0",
+    "eslint": "^1.10.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-watch": "^4.3.5",
+    "imagemin-pngquant": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/derekmisler/web-forms-udacity.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derekmisler/web-forms-udacity/issues"
+  },
+  "homepage": "https://github.com/derekmisler/web-forms-udacity"
+}

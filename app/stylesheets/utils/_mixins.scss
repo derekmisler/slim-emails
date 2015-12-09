@@ -1,0 +1,159 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/// Responsive manager
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+/// @link http://sass-guidelin.es/#breakpoint-manager Sass Guidelines - Breakpoint Manager
+@mixin respond-to($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
+  
+  @if not $query {
+    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+    @content;
+  }
+}
+
+
+
+
+// $Typescale
+// -------------------------------------//
+
+@mixin base-typescale($scale, $base, $value, $measure:"") {
+  @if $value == rem {
+    font-size: base-context-calc($scale, $base, $value);
+  } @else if $value == em {
+    font-size: base-context-calc($scale, $base, $value);
+  } @else {
+    font-size: $scale * 1px;
+  }
+
+  @if $measure != "" {
+    @if $value == rem {
+      margin-bottom: base-measure-margin($scale, $measure, $value);
+    } @else if $value == em {
+      margin-bottom: base-measure-margin($scale, $measure, $value: em);
+    } @else {
+      margin-bottom: base-measure-margin($scale, $measure, $value: px);
+    }
+  }
+}
+
+
+// $Headings
+// https://github.com/typeplate/starter-kit/issues/27
+// -------------------------------------//
+// Props to Harry Roberts for this trick.
+//
+// @notes
+// optimizeLegibility           Enables ligatures and kerning
+// single line height           Fixes large spaces when a heading wraps two lines
+
+%base-hN {
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+  color: $heading-color;
+  font-family: $heading-font-family;
+}
+
+@mixin base-headings() {
+  @each $name, $size in $base-scale {
+    .#{$name} {
+      @extend %base-hN;
+      @include base-typescale(
+        $size,
+        $base-font-base,
+        $base-typescale-unit,
+        $base-measure
+      );
+    }
+  }
+}
+
+@mixin base-headings-style() {
+  @each $h, $size in $base-headings {
+    #{$h} {
+      @extend .#{$size};
+    }
+  }
+}
+
+
+// $Hypens
+// -------------------------------------//
+// @notes
+// http://caniuse.com/#search=hyphens
+// http://trentwalton.com/2011/09/07/css-hyphenation
+//
+// @values              [ none | manual | auto ]
+
+@mixin base-hyphens($val) {
+  @each $prefix in $base-prefixes {
+    #{$prefix}hyphens: $val;
+  }
+}
+
+// $Pull-Quotes Mixin
+// -------------------------------------//
+
+@mixin pull-quotes($fontsize, $opacity, $color) {
+  position: relative;
+  padding: context-calc($fontsize, $fontsize, em);
+
+  &:before,
+  &:after {
+    height: context-calc($fontsize, $fontsize, em);
+    opacity: $opacity;
+    position: absolute;
+    font-size: $fontsize;
+    color: $color;
+  }
+
+  &:before {
+    content: '“';
+    top:  0;
+    left: 0;
+  }
+
+  &:after {
+    content: '”';
+    bottom: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,58 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+  @return asset($base, 'images/', $path);
+}
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+  @return asset($base, 'fonts/', $path);
+}
+
+// $Context Calculator
+// -------------------------------------//
+// target / context = result
+//
+// @example             p { font-size: base-context-calc(24, 16, px, 18 * 1.65); }
+
+@function base-context-calc($scale, $base, $value) {
+  @return ($scale/$base) + $value;
+}
+
+
+// $Measure-Margin
+// -------------------------------------//
+// divide 1 unit of measure by given font-size & return relative value
+
+@function base-measure-margin($scale, $measure, $value) {
+  $pixelValue: $scale/$measure;
+  $remValue: $pixelValue * $base-font-base;
+
+  @if $value == rem {
+    @return $pixelValue + $value;
+  } @else if $value == em {
+    @return ($remValue/$scale) + $value;
+  } @else {
+    @return $remValue * 1px;
+  }
+}
