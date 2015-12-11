@@ -36,7 +36,7 @@ var {
   @extend .base-beta;
   @media( min-width: 768px ) {
     @include base-typescale(
-      map-get($base-scale, base-mega),
+      map-get($base-scale, base-alpha),
       $base-font-base,
       $base-typescale-unit,
       $base-measure
@@ -45,11 +45,11 @@ var {
 }
 
 .title-display {
-  @extend .base-gamma;
+  @extend .base-delta;
 
   @media( min-width: 768px ) {
     @include base-typescale(
-      map-get($base-scale, base-alpha),
+      map-get($base-scale, base-gamma),
       $base-font-base,
       $base-typescale-unit,
       $base-measure
@@ -64,24 +64,24 @@ h1 {
     text-shadow: 2px 2px 0 $bg-color, 3px 3px 0 $mid-grey;
   }
 }
-h2 {
+h3 {
   text-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
   @media( min-width: 768px ) {
     text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 $mid-grey;
   }
 }
-h2:before,
-h2:after {
+h3:before,
+h3:after {
   content: "";
   display: inline-block;
   vertical-align: middle;
   height: 1px;
   background: $heading-color;
   box-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
-  margin: 0 $spacing-unit/2;
-  width: 15%;
+  margin: 0 $spacing-unit/3;
+  width: 10%;
   @media( min-width: 768px ) {
-    margin: 0 $spacing-unit;
-    width: 25%;
+    margin: 0 $spacing-unit/2;
+    width: 15%;
   }
 }

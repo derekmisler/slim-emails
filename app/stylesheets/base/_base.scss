@@ -5,14 +5,13 @@
 // $Global Styles
 // -------------------------------------//
 
-html {
+*, *::before, *::after {
   box-sizing: border-box;
+} 
+
+html {
   font: $base-font-weight #{$base-font-size + "%"}/#{$base-line-height} $base-font-family;
 }
-
-*, *::before, *::after {
-  box-sizing: inherit;
-} 
 
 body {
 

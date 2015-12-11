@@ -4,13 +4,13 @@ gulp = require('gulp')
 sass = require('gulp-sass')
 autoprefixer = require('gulp-autoprefixer')
 browserSync = require('browser-sync').create()
+coffee = require('gulp-coffee')
 coffeelint = require('gulp-coffeelint')
 concat = require('gulp-concat')
 uglify = require('gulp-uglify')
 sourcemaps = require('gulp-sourcemaps')
 imagemin = require('gulp-imagemin')
 pngquant = require('imagemin-pngquant')
-coffee = require('gulp-coffee')
 
 gulp.task 'serve', [
   'copy-html'

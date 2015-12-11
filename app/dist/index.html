@@ -13,39 +13,43 @@
   <body>
 
     <header class="container">
-      <h1 class="title ampersand">Building High Conversion Web Forms</h1>
+      <h1 class="title">Building High Conversion Web Forms</h1>
     </header>
-    <section class="container card">
-      <h3 class="title-display placeholder">Untitled Event</h3>
-      <div class="card-details">
-        <div class="card-detail">
-          <div class="card-detail-category">What?</div>
-          <div class="placeholder card-detail-actual what">Description</div>
-        </div>
-        <div class="card-detail">
-          <div class="card-detail-category">Where?</div>
-          <div class="placeholder card-detail-actual where">Place</div>
-        </div>
-        <div class="card-detail">
-          <div class="card-detail-category">When?</div>
-          <div class="placeholder card-detail-actual when">Time</div>
-        </div>
-        <div class="card-detail visually-hidden">
-          <div class="card-detail-category">Who?</div>
-          <div class="placeholder card-detail-actual who">People</div>
+
+    <section class="container">
+      <div class="card columns-6">
+        <h3 class="title-display placeholder">Untitled Event</h3>
+        <div class="card-details container">
+          <div class="card-detail columns-6">
+            <div class="card-detail-category">What?</div>
+            <div class="placeholder card-detail-actual what">Description</div>
+          </div>
+          <div class="card-detail columns-6">
+            <div class="card-detail-category">Where?</div>
+            <div class="placeholder card-detail-actual where">Place</div>
+          </div>
+          <div class="card-detail columns-6">
+            <div class="card-detail-category">When?</div>
+            <div class="placeholder card-detail-actual when">Time</div>
+          </div>
+          <div class="card-detail visually-hidden columns-6">
+            <div class="card-detail-category">Who?</div>
+            <div class="placeholder card-detail-actual who">People</div>
+          </div>
         </div>
       </div>
     </section>
+
     <section class="container inputs">
       <div class="input split">
         <div class="input-type">Event Name</div>
-        <div class="input-actual"><input type="text" class="model model-title title"></div>
+        <div class="input-actual"><input type="text" class="model-title"></div>
       </div>
       <div class="input split">
         <div class="input-type">Event Type</div>
         <div class="input-actual">
-          <input list="eventtype" type="text" class="model model-type type">
-          <datalist id="eventtype" class="model model-type type">
+          <input list="eventtype" type="text" class="model-type">
+          <datalist id="eventtype" class="model-type">
             <option value="Party"></option>
             <option value="Meeting"></option>
             <option value="Conference Talk"></option>
@@ -55,31 +59,31 @@
       </div>
       <div class="input split">
         <div class="input-type">Start time</div>
-        <div class="input-actual"><input class="model model-startTime input-datetime start-time" type="time"></div>
+        <div class="input-actual"><input class="model-startTime input-datetime" type="time"></div>
       </div>
       <div class="input split">
         <div class="input-type">End time</div>
-        <div class="input-actual"><input class="model model-endTime input-datetime end-time" type="time"></div>
+        <div class="input-actual"><input class="model-endTime input-datetime" type="time"></div>
       </div>
       <div class="input split">
         <div class="input-type">Day</div>
-        <div class="input-actual"><select class="model model-startDay input-datetime day" type="text"></select></div>
+        <div class="input-actual"><select class="model-startDay input-datetime" type="text"></select></div>
       </div>
       <div class="input split">
         <div class="input-type">Month</div>
-        <div class="input-actual"><select class="model model-startMonth input-datetime month" type="text"></select></div>
+        <div class="input-actual"><select class="model-startMonth input-datetime" type="text"></select></div>
       </div>
       <div class="input split">
         <div class="input-type">Year</div>
-        <div class="input-actual"><select class="model model-startYear input-datetime year" type="text"></select></div>
+        <div class="input-actual"><select class="model-startYear input-datetime" type="text"></select></div>
       </div>
       <div class="input split">
         <div class="input-type">Event Description</div>
-        <div class="input-actual"><input type="text" class="model model-description"></div>
+        <div class="input-actual"><input type="text" class="model-description"></div>
       </div>
       <div class="input split">
         <div class="input-type">Event location</div>
-        <div class="input-actual"><input type="text" class="model model-location"></div>
+        <div class="input-actual"><input type="text" class="model-location"></div>
       </div>
       <div class="input full">
         <div class="input-type">Attendee email addresses</div>

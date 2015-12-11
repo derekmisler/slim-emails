@@ -1,31 +1,35 @@
-@mixin columnCalc($columns) { 
-  width: -webkit-calc((100% / #{$block-grid}) * #{$columns} - #{$spacing-unit/2});
-  width:         calc((100% / #{$block-grid}) * #{$columns} - #{$spacing-unit/2});
-}
 @mixin columns-html-classes() {
   @for $i from 1 through $block-grid {
     .columns-#{$i} {
-      @include columnCalc($i)
+      width: 100% / $block-grid * $i;
     }
+  }
+}
+
+.container {
+  @extend %clearfix;
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-unit;
+  padding-right: $spacing-unit;
+  .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 [class*="columns-"] {
   width: 100%;
   float: left;
-  box-sizing: border-box;
-  margin-bottom: ($spacing-unit / 2);
+  margin-bottom: $spacing-small;
+  padding: 0 $spacing-small;
 }
 
 @include respond-to('medium') {
   [class*="columns-"] {
-    margin: 0 ($spacing-unit / 2);
-  }
-  [class*="columns-"]:first-child {
-    margin-left: 0;
-  }
-  [class*="columns-"]:last-child {
-    margin-right: 0;
+    margin: 0;
   }
   @include columns-html-classes();
 }

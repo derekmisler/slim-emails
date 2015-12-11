@@ -5,27 +5,14 @@
 /**
  * Clear inner floats
  */
-.clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
-/**
- * Main content containers
- * 1. Make the container full-width with a maximum width
- * 2. Center it in the viewport
- * 3. Leave some space on the edges, especially valuable on small screens
- */
-.container {
-  @extend %clearfix;
-  width: 100%; /* 1 */
-  max-width: $max-width; /* 1 */
-  margin-left: auto; /* 2 */
-  margin-right: auto; /* 2 */
-  padding-left: $spacing-unit; /* 3 */
-  padding-right: $spacing-unit; /* 3 */
- }
 
 /**
  * Hide text while making it readable for screen readers

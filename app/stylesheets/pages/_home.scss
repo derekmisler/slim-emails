@@ -1,3 +1,24 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+.card {
+  border: 1px solid $brand-color;
+  padding: $spacing-small;
+  margin: 0 auto $spacing-unit;
+
+  .title-display {
+    text-align: center;
+  }
+}
+.card-details {
+
+  .card-detail {
+
+    .card-detail-category{
+
+    }
+    .card-detail-actual {
+
+    }
+  }
+}
