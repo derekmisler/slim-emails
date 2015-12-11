@@ -24,7 +24,8 @@ APP = do ->
 
   Model = ->
     self = this
-    # pulls values from elems of class="model model-*" to create Model's raw info and set up 1-way binding
+    # pulls values from elems of class="model model-*"
+    # to create Model's raw info and set up 1-way binding
 
     Binding = (elem, value) ->
       elem = elem or null
