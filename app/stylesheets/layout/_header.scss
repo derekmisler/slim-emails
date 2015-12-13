@@ -5,4 +5,5 @@
 header {
   margin: $spacing-unit auto;
   text-align: center;
+  @extend %clearfix;
 }
