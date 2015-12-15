@@ -4,7 +4,7 @@
 body {
   color: $text-color;
   font-weight: $base-font-weight;
-  font-size: $base-font-size;
+  font-size: $base-font-base;
   line-height: $base-line-height;
   font-family: $base-font-family;
   @extend %base-breakword;

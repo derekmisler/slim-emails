@@ -41,14 +41,14 @@
     </section>
 
     <section class="container inputs">
-      <div class="input split">
-        <div class="input-type">Event Name</div>
-        <div class="input-actual"><input type="text" class="model-title"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event Type</div>
-        <div class="input-actual">
-          <input list="eventtype" type="text" class="model-type">
+      <label for="model-title" class="input split">
+        <div class="columns-5 input-type">Event Name</div>
+        <div class="columns-7 input-actual"><input placeholder="Event Name" autofocus required type="text" id="model-title"></div>
+      </label>
+      <label for="model-type" class="input split">
+        <div class="columns-5 input-type">Event Type</div>
+        <div class="columns-7 input-actual">
+          <input list="eventtype" type="text" id="model-type" required placeholder="Select a type">
           <datalist id="eventtype" class="model-type">
             <option value="Party"></option>
             <option value="Meeting"></option>
@@ -56,45 +56,37 @@
             <option value="Sports Game"></option>
           </select>
         </div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Start time</div>
-        <div class="input-actual"><input class="model-startTime input-datetime" type="time"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">End time</div>
-        <div class="input-actual"><input class="model-endTime input-datetime" type="time"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Day</div>
-        <div class="input-actual"><select class="model-startDay input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Month</div>
-        <div class="input-actual"><select class="model-startMonth input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Year</div>
-        <div class="input-actual"><select class="model-startYear input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event Description</div>
-        <div class="input-actual"><input type="text" class="model-description"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event location</div>
-        <div class="input-actual"><input type="text" class="model-location"></div>
-      </div>
-      <div class="input full">
-        <div class="input-type">Attendee email addresses</div>
-        <div class="input-actual"><input class="new-guest" type="text"></div>
-      </div>
+      </label>
+      <label for="model-startTime" class="input split">
+        <div class="columns-5 input-type">Start time</div>
+        <div class="columns-7 input-actual"><input id="model-startTime" required class="input-datetime" type="time"></div>
+      </label>
+      <label for="model-endTime" class="input split">
+        <div class="columns-5 input-type">End time</div>
+        <div class="columns-7 input-actual"><input id="model-endTime" class="input-datetime" type="time"></div>
+      </label>
+      <label for="model-date" class="input split">
+        <div class="columns-5 input-type">Date</div>
+        <div class="columns-7 input-actual"><input id="model-date" required class="input-date" type="date"></div>
+      </label>
+      <label for="model-description" class="input split">
+        <div class="columns-5 input-type">Event Description</div>
+        <div class="columns-7 input-actual"><input type="text" id="model-description"></div>
+      </label>
+      <label for="model-location" class="input split">
+        <div class="columns-5 input-type">Event location</div>
+        <div class="columns-7 input-actual"><input placeholder="Derek's House" required type="text" id="model-location"></div>
+      </label>
+      <label for="new-guest" class="input full">
+        <div class="columns-5 input-type">Attendee emails</div>
+        <div class="columns-7 input-actual"><input placeholder="name@example.com" required id="new-guest" type="text"></div>
+      </label>
       
       <button id="create">Create event</button>
       
-      <div class="attendees"></div>
-      <label>Show attendees in the invite?
-        <input type="checkbox">
+      <div class="attendees container"></div>
+      <label for="attendees">Show attendees in the invite?
+        <input id="attendees" type="checkbox">
       </label>
 
     </section>

@@ -1,3 +1,29 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to forms.
 // -----------------------------------------------------------------------------
+
+button,
+input,
+optgroup,
+select,
+textarea,
+label,
+.input-type{
+  padding: $spacing-small;
+  margin: 0 0 $spacing-small;
+}
+
+.input{
+  @extend .columns-6;
+  float: left;
+
+  .input-type {
+    text-align: right;
+  }
+
+  [class*="input-"] {
+  }
+}
+button {
+  @extend .container;
+}

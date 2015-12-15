@@ -1,0 +1,75 @@
+| <!doctype html
+html lang="en" 
+  head
+    meta charset="utf-8" /
+    meta content="ie=edge" http-equiv="x-ua-compatible" /
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Building High Conversion Web Forms
+    meta content="" name="description" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    link href="css/main.css" rel="stylesheet" /
+  body
+    header.container
+      h1.title Building High Conversion Web Forms
+    section.container
+      .card.columns-6
+        h3.title-display.placeholder Untitled Event
+        .card-details.container
+          .card-detail.columns-6
+            .card-detail-category What?
+            .placeholder.card-detail-actual.what Description
+          .card-detail.columns-6
+            .card-detail-category Where?
+            .placeholder.card-detail-actual.where Place
+          .card-detail.columns-6
+            .card-detail-category When?
+            .placeholder.card-detail-actual.when Time
+          .card-detail.visually-hidden.columns-6
+            .card-detail-category Who?
+            .placeholder.card-detail-actual.who People
+    section.container.inputs
+      label.input.split for="model-title" 
+        .columns-5.input-type Event Name
+        .columns-7.input-actual
+          input#model-title autofocus="" placeholder=("Event Name") required="" type="text" /
+      label.input.split for="model-type" 
+        .columns-5.input-type Event Type
+        .columns-7.input-actual
+          input#model-type list="eventtype" placeholder=("Select a type") required="" type="text" /
+          datalist#eventtype.model-type
+            option value="Party" 
+            option value="Meeting" 
+            option value=("Conference Talk") 
+            option value=("Sports Game") 
+      label.input.split for="model-startTime" 
+        .columns-5.input-type Start time
+        .columns-7.input-actual
+          input#model-startTime.input-datetime required="" type="time" /
+      label.input.split for="model-endTime" 
+        .columns-5.input-type End time
+        .columns-7.input-actual
+          input#model-endTime.input-datetime type="time" /
+      label.input.split for="model-date" 
+        .columns-5.input-type Date
+        .columns-7.input-actual
+          input#model-date.input-date required="" type="date" /
+      label.input.split for="model-description" 
+        .columns-5.input-type Event Description
+        .columns-7.input-actual
+          input#model-description type="text" /
+      label.input.split for="model-location" 
+        .columns-5.input-type Event Location
+        .columns-7.input-actual
+          input#model-location placeholder=("Derek's House") required="" type="text" /
+      label.input.full for="new-guest" 
+        .columns-5.input-type Attendee emails
+        .columns-7.input-actual
+          input#new-guest placeholder="name@example.com" required="" type="text" /
+      button#create Create event
+      .attendees.container
+      label for="attendees" 
+        | Show attendees in the invite?
+        input#attendees type="checkbox" /
+    footer.container
+      .error-message
+    script src="js/scripts.min.js" 

@@ -1,109 +1,131 @@
-<!doctype html>
+<!doctype html
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <title>Building High Conversion Web Forms</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="css/main.css">
+    <meta content="" name="description" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-
     <header class="container">
-      <h1 class="title">Building High Conversion Web Forms</h1>
+      <h1 class="title">
+        Building High Conversion Web Forms
+      </h1>
     </header>
-
     <section class="container">
       <div class="card columns-6">
-        <h3 class="title-display placeholder">Untitled Event</h3>
+        <h3 class="title-display placeholder">
+          Untitled Event
+        </h3>
         <div class="card-details container">
           <div class="card-detail columns-6">
-            <div class="card-detail-category">What?</div>
-            <div class="placeholder card-detail-actual what">Description</div>
+            <div class="card-detail-category">
+              What?
+            </div>
+            <div class="placeholder card-detail-actual what">
+              Description
+            </div>
           </div>
           <div class="card-detail columns-6">
-            <div class="card-detail-category">Where?</div>
-            <div class="placeholder card-detail-actual where">Place</div>
+            <div class="card-detail-category">
+              Where?
+            </div>
+            <div class="placeholder card-detail-actual where">
+              Place
+            </div>
           </div>
           <div class="card-detail columns-6">
-            <div class="card-detail-category">When?</div>
-            <div class="placeholder card-detail-actual when">Time</div>
+            <div class="card-detail-category">
+              When?
+            </div>
+            <div class="placeholder card-detail-actual when">
+              Time
+            </div>
           </div>
           <div class="card-detail visually-hidden columns-6">
-            <div class="card-detail-category">Who?</div>
-            <div class="placeholder card-detail-actual who">People</div>
+            <div class="card-detail-category">
+              Who?
+            </div>
+            <div class="placeholder card-detail-actual who">
+              People
+            </div>
           </div>
         </div>
       </div>
     </section>
-
     <section class="container inputs">
-      <div class="input split">
-        <div class="input-type">Event Name</div>
-        <div class="input-actual"><input type="text" class="model-title"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event Type</div>
-        <div class="input-actual">
-          <input list="eventtype" type="text" class="model-type">
-          <datalist id="eventtype" class="model-type">
+      <label class="input split" for="model-title">
+        <div class="columns-5 input-type">
+          Event Name
+        </div>
+        <div class="columns-7 input-actual">
+          <input autofocus="" id="model-title" placeholder="Event Name" required="" type="text" />
+        </div>
+      </label><label class="input split" for="model-type">
+        <div class="columns-5 input-type">
+          Event Type
+        </div>
+        <div class="columns-7 input-actual">
+          <input id="model-type" list="eventtype" placeholder="Select a type" required="" type="text" />
+          <datalist class="model-type" id="eventtype">
             <option value="Party"></option>
             <option value="Meeting"></option>
             <option value="Conference Talk"></option>
             <option value="Sports Game"></option>
-          </select>
+          </datalist>
         </div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Start time</div>
-        <div class="input-actual"><input class="model-startTime input-datetime" type="time"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">End time</div>
-        <div class="input-actual"><input class="model-endTime input-datetime" type="time"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Day</div>
-        <div class="input-actual"><select class="model-startDay input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Month</div>
-        <div class="input-actual"><select class="model-startMonth input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Year</div>
-        <div class="input-actual"><select class="model-startYear input-datetime" type="text"></select></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event Description</div>
-        <div class="input-actual"><input type="text" class="model-description"></div>
-      </div>
-      <div class="input split">
-        <div class="input-type">Event location</div>
-        <div class="input-actual"><input type="text" class="model-location"></div>
-      </div>
-      <div class="input full">
-        <div class="input-type">Attendee email addresses</div>
-        <div class="input-actual"><input class="new-guest" type="text"></div>
-      </div>
-      
-      <button id="create">Create event</button>
-      
-      <div class="attendees"></div>
-      <label>Show attendees in the invite?
-        <input type="checkbox">
-      </label>
-
+      </label><label class="input split" for="model-startTime">
+        <div class="columns-5 input-type">
+          Start time
+        </div>
+        <div class="columns-7 input-actual">
+          <input class="input-datetime" id="model-startTime" required="" type="time" />
+        </div>
+      </label><label class="input split" for="model-endTime">
+        <div class="columns-5 input-type">
+          End time
+        </div>
+        <div class="columns-7 input-actual">
+          <input class="input-datetime" id="model-endTime" type="time" />
+        </div>
+      </label><label class="input split" for="model-date">
+        <div class="columns-5 input-type">
+          Date
+        </div>
+        <div class="columns-7 input-actual">
+          <input class="input-date" id="model-date" required="" type="date" />
+        </div>
+      </label><label class="input split" for="model-description">
+        <div class="columns-5 input-type">
+          Event Description
+        </div>
+        <div class="columns-7 input-actual">
+          <input id="model-description" type="text" />
+        </div>
+      </label><label class="input split" for="model-location">
+        <div class="columns-5 input-type">
+          Event Location
+        </div>
+        <div class="columns-7 input-actual">
+          <input id="model-location" placeholder="Derek&#39;s House" required="" type="text" />
+        </div>
+      </label><label class="input full" for="new-guest">
+        <div class="columns-5 input-type">
+          Attendee emails
+        </div>
+        <div class="columns-7 input-actual">
+          <input id="new-guest" placeholder="name@example.com" required="" type="text" />
+        </div>
+      </label><button id="create">Create event</button>
+      <div class="attendees container"></div>
+      <label for="attendees">Show attendees in the invite?<input id="attendees" type="checkbox" /></label>
     </section>
-    
     <footer class="container">
       <div class="error-message"></div>
     </footer>
-
     <script src="js/scripts.min.js"></script>
-
   </body>
 </html>

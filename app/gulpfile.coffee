@@ -1,32 +1,34 @@
 ###eslint-env node ###
 
-gulp = require('gulp')
-sass = require('gulp-sass')
-autoprefixer = require('gulp-autoprefixer')
-browserSync = require('browser-sync').create()
-coffee = require('gulp-coffee')
-coffeelint = require('gulp-coffeelint')
-concat = require('gulp-concat')
-uglify = require('gulp-uglify')
-sourcemaps = require('gulp-sourcemaps')
-imagemin = require('gulp-imagemin')
-pngquant = require('imagemin-pngquant')
+gulp = require 'gulp'
+sass = require 'gulp-sass'
+autoprefixer = require 'gulp-autoprefixer'
+browserSync = require 'browser-sync'
+  .create()
+coffee = require 'gulp-coffee'
+coffeelint = require 'gulp-coffeelint'
+concat = require 'gulp-concat'
+uglify = require 'gulp-uglify'
+sourcemaps = require 'gulp-sourcemaps'
+imagemin = require 'gulp-imagemin'
+pngquant = require 'imagemin-pngquant'
+slim = require 'gulp-slim'
 
 gulp.task 'serve', [
-  'copy-html'
+  'slim'
   'copy-images'
   'scripts-dist'
   'styles'
 ], ->
   gulp.watch 'stylesheets/**/*.scss', [ 'styles' ]
-  gulp.watch '*.html', [ 'copy-html' ]
+  gulp.watch '*.slim', [ 'slim' ]
   gulp.watch('./dist/**/*').on 'change', browserSync.reload
   browserSync.init server: './dist'
   return
 
 # regular build task if I don't want to watch anything
 gulp.task 'build', [
-  'copy-html'
+  'slim'
   'copy-images'
   'styles'
   'scripts-dist'
@@ -51,10 +53,11 @@ gulp.task 'lint', ->
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
 
-# Copy html to dist
-gulp.task 'copy-html', ->
-  gulp.src('./index.html')
-    .pipe gulp.dest('dist')
+# Convert slim to html and move to dist
+gulp.task 'slim', ->
+  gulp.src('*.slim')
+    .pipe slim pretty: true
+    .pipe gulp.dest 'dist'
 
 # Minify pngs and copy images to dist folder
 gulp.task 'copy-images', ->
