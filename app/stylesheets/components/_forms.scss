@@ -7,18 +7,29 @@ input,
 optgroup,
 select,
 textarea,
-label,
-.input-type{
+label{
   padding: $spacing-small;
   margin: 0 0 $spacing-small;
+  width: 100%;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin: $spacing-small;
 }
 
 .input{
-  @extend .columns-6;
   float: left;
-
+  &.split{
+    @extend .columns-6;
+  }
+  &.full{
+    @extend .columns-12;
+  }
   .input-type {
     text-align: right;
+    padding: $spacing-small;
+    margin: 0 0 $spacing-small;
   }
 
   [class*="input-"] {

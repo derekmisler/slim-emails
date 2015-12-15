@@ -3,8 +3,7 @@
 gulp = require 'gulp'
 sass = require 'gulp-sass'
 autoprefixer = require 'gulp-autoprefixer'
-browserSync = require 'browser-sync'
-  .create()
+browserSync = require('browser-sync').create()
 coffee = require 'gulp-coffee'
 coffeelint = require 'gulp-coffeelint'
 concat = require 'gulp-concat'

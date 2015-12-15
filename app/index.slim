@@ -1,4 +1,4 @@
-| <!doctype html
+doctype html
 html lang="en" 
   head
     meta charset="utf-8" /
@@ -31,16 +31,16 @@ html lang="en"
       label.input.split for="model-title" 
         .columns-5.input-type Event Name
         .columns-7.input-actual
-          input#model-title autofocus="" placeholder=("Event Name") required="" type="text" /
+          input#model-title autofocus="" placeholder="Event Name" required="" type="text" /
       label.input.split for="model-type" 
         .columns-5.input-type Event Type
         .columns-7.input-actual
-          input#model-type list="eventtype" placeholder=("Select a type") required="" type="text" /
+          input#model-type list="eventtype" placeholder="Select a type" required="" type="text" /
           datalist#eventtype.model-type
             option value="Party" 
             option value="Meeting" 
-            option value=("Conference Talk") 
-            option value=("Sports Game") 
+            option value="Conference Talk" 
+            option value="Sports Game" 
       label.input.split for="model-startTime" 
         .columns-5.input-type Start time
         .columns-7.input-actual
@@ -60,10 +60,10 @@ html lang="en"
       label.input.split for="model-location" 
         .columns-5.input-type Event Location
         .columns-7.input-actual
-          input#model-location placeholder=("Derek's House") required="" type="text" /
+          input#model-location placeholder="Derek's House" required="" type="text" /
       label.input.full for="new-guest" 
-        .columns-5.input-type Attendee emails
-        .columns-7.input-actual
+        .columns-2.input-type Attendee emails
+        .columns-10.input-actual
           input#new-guest placeholder="name@example.com" required="" type="text" /
       button#create Create event
       .attendees.container
