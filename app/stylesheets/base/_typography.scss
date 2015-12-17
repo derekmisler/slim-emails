@@ -34,7 +34,7 @@ var {
 
 .title {
   @extend .base-beta;
-  @media( min-width: 768px ) {
+  @include respond-to('medium') {
     @include base-typescale(
       map-get($base-scale, base-alpha),
       $base-font-base,
@@ -47,7 +47,7 @@ var {
 .title-display {
   @extend .base-gamma;
   
-  @media( min-width: 768px ) {
+  @include respond-to('medium') {
     @include base-typescale(
       map-get($base-scale, base-gamma),
       $base-font-base,
@@ -60,13 +60,13 @@ var {
 
 h1 {
   text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 $mid-grey;
-  @media( min-width: 768px ) {
+  @include respond-to('medium') {
     text-shadow: 2px 2px 0 $bg-color, 3px 3px 0 $mid-grey;
   }
 }
 h3 {
   text-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
-  @media( min-width: 768px ) {
+  @include respond-to('medium') {
     text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 $mid-grey;
   }
 }
@@ -80,7 +80,7 @@ h3:after {
   box-shadow: 1px 1px 0 $bg-color, 1px 2px 0 $mid-grey;
   margin: 0 $spacing-unit/3;
   width: 10%;
-  @media( min-width: 768px ) {
+  @include respond-to('medium') {
     margin: 0 $spacing-unit/2;
     width: 15%;
   }
