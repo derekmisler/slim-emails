@@ -1,7 +1,7 @@
 {
-  "name": "web-forms-udacity",
+  "name": "slim-emails",
   "version": "0.1.0",
-  "description": "Building High Conversion Web Forms",
+  "description": "Responsive Emails",
   "author": "Derek Misler <derekmisler@gmail.com>",
   "dependencies": {
     "browser-sync": "^2.10.0",
@@ -9,23 +9,23 @@
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-coffee": "^2.3.1",
-    "gulp-coffeelint": "^0.5.0",
+    "gulp-coffeelint": "^0.6.0",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",
+    "gulp-inline-css": "^3.1.0",
     "gulp-sass": "^2.1.0",
     "gulp-slim": "^0.3.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
-    "gulp-watch": "^4.3.5",
-    "imagemin-pngquant": "^4.2.0"
+    "gulp-watch": "^4.3.5"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/derekmisler/web-forms-udacity.git"
+    "url": "https://github.com/derekmisler/slim-emails.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/derekmisler/web-forms-udacity/issues"
+    "url": "https://github.com/derekmisler/slim-emails/issues"
   },
-  "homepage": "https://github.com/derekmisler/web-forms-udacity"
+  "homepage": "https://github.com/derekmisler/slim-emails"
 }

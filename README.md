@@ -1,14 +1,5 @@
-# Building High Conversion Web Forms
-## A Course from Udacity
-
-Skills used:
-* Automation via Gulp
-* Ruby Slim
-* Coffeescript
-* Typeplate for a sweet baseline grid
-* Sass via the 7-1 Pattern
-* Concatination and Minification of both CSS and JS
-* Image Optimization for PNGs
+# Building emails with slim and scss
+I created this to make it easy to build email templates. There will still be a bit of copying/pasting to get it to function correctly in our system, though.
 
 Get started with:
 ```
@@ -18,4 +9,9 @@ npm install
 Then,
 ```
 cd app && gulp serve
+```
+
+To get your css-inlined file,
+```
+gulp build
 ```
