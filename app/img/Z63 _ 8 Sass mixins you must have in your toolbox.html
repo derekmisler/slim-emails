@@ -1,0 +1,1537 @@
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Z63 | 8 Sass mixins you must have in your toolbox</title>
+            <link rel="shortcut icon" type="image/x-icon" href="http://zerosixthree.se/wp-content/themes/zerosixthree/static/img/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link href='http://zerosixthree.se/wp-content/themes/zerosixthree/static/css/style__0.1.0.css' rel='stylesheet' type='text/css'>
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="The eight best Sass mixins you have to have in your toolbox."/>
+<link rel="canonical" href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="8 Sass mixins you must have in your toolbox" />
+<meta property="og:description" content="The eight best Sass mixins you have to have in your toolbox." />
+<meta property="og:url" content="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" />
+<meta property="og:site_name" content="zerosixthree" />
+<meta property="article:tag" content="CSS,Tips" />
+<meta property="article:section" content="CSS" />
+<meta property="article:published_time" content="2014-01-15T12:20:06+00:00" />
+<meta property="article:modified_time" content="2015-10-19T08:33:43+00:00" />
+<meta property="og:updated_time" content="2015-10-19T08:33:43+00:00" />
+<meta property="og:image" content="http://zerosixthree.se/wp-content/uploads/2014/01/logo-large.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="The eight best Sass mixins you have to have in your toolbox."/>
+<meta name="twitter:title" content="8 Sass mixins you must have in your toolbox"/>
+<meta name="twitter:site" content="@seb_ekstrom"/>
+<meta name="twitter:domain" content="zerosixthree"/>
+<meta name="twitter:image:src" content="http://zerosixthree.se/wp-content/uploads/2014/01/logo-large.png"/>
+<meta name="twitter:creator" content="@seb_ekstrom"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="zerosixthree &raquo; 8 Sass mixins you must have in your toolbox Comments Feed" href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/feed/" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zerosixthree.se/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://zerosixthree.se/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.1.10" />
+<link rel='shortlink' href='http://zerosixthree.se/?p=187' />
+</head>
+<body class="single single-post postid-187 single-format-standard">
+
+  <div class="masthead">
+    <div class="container container-large container-masthead">
+      <header class="main-header" role="banner">
+        <h1 class="title"><a href="http://zerosixthree.se/">
+          <span class="mobile-logo">z63</span>
+          <span class="desktop-logo">zerosixthree</span>
+        </a></h1>
+        <a href="#" class="nav-trigger" id="nav-trigger">
+          <span class="icon-gigantic icon-menu"></span>
+          <span class="visually-hidden">Open navigation</span>
+        </a>
+      </header>      
+        <nav class="main-navigation" role="navigation">
+          <ul>
+            <li class="mobile-nav-heading"><a href="http://zerosixthree.se/">zerosixthree</a></li>
+            <li><a href="http://zerosixthree.se/">Home</a></li>
+            <li><a href="http://zerosixthree.se/snippets/">Snippets</a></li>
+            <li><a href="http://zerosixthree.se/about/">About</a></li>
+            <li class="mobile-social-link"><a href="http://twitter.com/seb_ekstrom">@seb_ekstrom</a></li>
+          </ul>
+        </nav>
+      </div>
+  </div>      <main class="main" data-mastheadImageSrc="http://zerosixthree.se/wp-content/uploads/2014/01/toolbox-large.jpg">
+    <div class="container container-small">
+      <article class="post">
+        <header class="post-header">
+          <h1 class="post-title">8 Sass mixins you must have in your toolbox</h1>
+          <div class="post-meta">
+            <p>Published <time>January 15, 2014</time></p>
+          </div>
+        </header>
+        <div class="post-content">
+          <p>At their core, Sass mixins are blocks of code that you define once and can then re-use anywhere, if you are familiar with any programming language you can think of them as functions. A mixin can take multiple parameters and make calls to functions to in the end output CSS, and they are super useful when you want really clean and DRY code.<br />
+Some of the mixins below are already included in the <a href="http://compass-style.org/" target="_blank">Compass</a> library, but since I prefer not to use Compass in my projects, I decided to write them myself.</p>
+<p>So, here are the 8 mixins I think every developer should have in their toolbox.</p>
+<h2>1. Set a rem font size with pixel fallback</h2>
+<p>Rem is similar to the em value, but instead of being relative to the parent element it&#8217;srelative to the font-size set in the &lt;html&gt;.<br />
+It has all the benefits of em but you don&#8217;t get issues with e.g (<a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank">compounding</a>) since rem is only relative to the html element. The bad part is there&#8217;s no support for rem units in IE8 and below. But with this mixin we can create a fallback to pixels when rem isn&#8217;t supported.</p>
+<pre class="language-css"><code>@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>p {
+  @include font-size(14px)
+}</code></pre>
+<h4>Output</h4>
+<pre class="language-css"><code>p {
+  font-size: 14px; //Will be overridden if browser supports rem
+  font-size: 0.8rem;
+}</code></pre>
+<hr />
+<h2>2. Breakpoints</h2>
+<p>When Sass 3.2 was released some time ago, they made it possible to define names to our media queries, which makes the usage of them a lot cleaner. Instead of calling them <em>@media (min-width: 600px)</em> we can give them more semantic names like <em>&#8220;breakpoint-large&#8221;</em> or <em>&#8220;breakpoint-a-really-large-computer-machine&#8221;</em>.</p>
+<pre class="language-css"><code>@mixin bp-large {
+  @media only screen and (max-width: 60em) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (max-width: 40em) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (max-width: 30em) {
+    @content;
+  }
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>.sidebar {
+  width: 60%;
+  float: left;
+  margin: 0 2% 0 0;
+  @include bp-small {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+}</code></pre>
+<h4>Output</h4>
+<pre class="language-css"><code>.sidebar {
+  width: 60%;
+  float: left;
+  margin: 0 2% 0 0;
+  @media only screen and (max-width: 30){
+    .sidebar{width: 100%; float: none; margin: 0;}
+  }
+}</code></pre>
+<hr />
+<h2>3. SVG background images with PNG and retina fallback</h2>
+<p>This mixin depends on Modernizr and creates a bit more work for you when creating images for your site, but it&#8217;s really worth it in the end.<br />
+You need one .svg file, that will serve as the default background image. You&#8217;ll also need a regular .png that serves as a fallback for non-svg-supporting browsers. And last you need a twice as large .png as a second fallback to retina screens.<br />
+All in all you need this:</p>
+<ul>
+<li>pattern.svg</li>
+<li>pattern.png</li>
+<li>pattern@2x.png</li>
+</ul>
+<pre class="language-css"><code>$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &amp;{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>body {
+  @include background-image('pattern');
+}</code></pre>
+<hr />
+<h2>4. Animations and keyframes</h2>
+<p>Animations are always a pain to create with all the vendor prefixes and what not. But with the help of this mixin it will boil down to just a few lines of code.</p>
+<pre class="language-css"><code>@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+
+.element {
+  width: 100px;
+  height: 100px;
+  background: black;
+  @include animation('slide-down 5s 3');
+}</code></pre>
+<hr />
+<h2>5. Transitions</h2>
+<p>As with animations, transitions also make your code quite bloated which can hurt the readability. But this is also solved by using a mixin for it.</p>
+<pre class="language-css"><code>@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>a {
+  color: gray;
+  @include transition(color .3s ease);
+  &amp;:hover {
+    color: black;
+  }
+}</code></pre>
+<hr />
+<h2>6. Cross browser opacity</h2>
+<p>This mixin ensures cross browser opacity all the way down to Internet Explorer 5. Though if you have to optomize for IE5, you have a lot bigger problems than opacity, godspeed my friend.</p>
+<pre class="language-css"><code>@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>.faded-text {
+  @include opacity(0.8);
+}</code></pre>
+<hr />
+<h2>7. Clearfix</h2>
+<p>There&#8217;s a lot of different clearfix hacks out there on the web. This one is created by (<a href="http://nicolasgallagher.com/micro-clearfix-hack" target="_blank">Nicolas Gallagher</a>) and I&#8217;ve found it to be the most solid one. Works in IE6 and up.</p>
+<pre class="language-css"><code>%clearfix {
+  *zoom: 1;
+  &amp;:before, &amp;:after {
+    content: " ";
+    display: table;
+  }
+  &amp;:after {
+    clear: both;
+  }
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-css"><code>.container-with-floated-children {
+  @extend %clearfix;
+}</code></pre>
+<hr />
+<h2>8. Visually hide an element</h2>
+<p>When you hide an element with display: none, that prevents screen readers from reading it to the user. Sometimes that&#8217;s fine, but in other cases this will make the site hard to use for people with screen readers. Thus, we have to use another technique for hiding elements while at the same time make them <a href="http://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/" target="_blank">accessible</a>.<br />
+In this example, we are using the <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_" target="_blank">Sass placeholder selector</a> since the output will always be the same, which enables us to reduce repetetive code in the output.</p>
+<pre class="language-css"><code>%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}</code></pre>
+<h4>Usage</h4>
+<pre class="language-markup"><code>&lt;button class="mobile-navigation-trigger"&gt;
+  &lt;b class="visually-hidden"&gt;Open the navigation&lt;/b&gt;
+  &lt;img src="img/mobile-navigation-icon.svg"&gt;
+&lt;/button&gt;</code></pre>
+<pre class="language-css"><code>.visually-hidden {
+  @extend %visuallyhidden;
+}</code></pre>
+<hr />
+<p>Do you have any favorite mixins that you use a lot? Please post them in the comment field below!</p>
+          <div class="evry-promo" id="fusionads"><a href="http://everyheartbeat.se/?utm_source=zerosixthree&utm_medium=banner&utm_campaign=zerosixthree-promo" target="_blank"><img src="http://zerosixthree.se/wp-content/uploads/2015/09/evry-bnr.jpg" alt=""></a><p><a href="http://everyheartbeat.se/?utm_source=zerosixthree&utm_medium=banner&utm_campaign=zerosixthree-promo" target="_blank">Get your favorite song visualized on a poster</a></p></div>
+          <script type="text/javascript" src="//cdn.fusionads.net/fusion.js?zoneid=1332&serve=C6SDP2Y&placement=zerosixthree" id="_fusionads_js"></script>
+        </div>
+        <footer class="article-footer">
+          <div class="article-meta">
+            <div class="author">
+              <h3 class="epsilon">Author</h3>
+              <h2 class="delta">Sebastian Ekström</h2>
+              <p>Follow him at <a href="http://twitter.com/seb_ekstrom">@seb_ekstrom</a>.</p>
+            </div>
+            <div class="article-share">
+              <h3 class="epsilon">Share this article</h3>
+              <ul class="list-social">
+                <li>
+                  <a href="http://www.facebook.com/sharer.php?u=http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/&t=8 Sass mixins you must have in your toolbox" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
+                    <span class="icon icon-facebook"></span><span class="visually-hidden">Facebook</span></span>
+                  </a>
+                </li>
+                <li>
+                    <a href="http://twitter.com/share?text=8 Sass mixins you must have in your toolbox&url=http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/">
+                    <span class="icon icon-twitter"></span><span class="visually-hidden">Twitter</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:?Subject=8 Sass mixins you must have in your toolbox, http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" target="_top">
+                    <span class="icon icon-mail"></span><span class="visually-hidden">Mail</span></span>
+                  </a>
+                </li>            
+              </ul>              
+            </div>
+          </div>
+          <div class="related">
+            <h3 class="epsilon">Related articles</h3>
+
+            <ul class="list-base">
+                
+                        
+                  <li>
+                    <h4 class="zeta"><a href="http://zerosixthree.se/detecting-media-queries-with-javascript/">Detecting media queries with Javascript</a></h4>
+                  </li>
+                    
+                    
+                        
+                  <li>
+                    <h4 class="zeta"><a href="http://zerosixthree.se/create-your-own-personal-boilerplate/">Create your own personal boilerplate</a></h4>
+                  </li>
+                    
+                    
+                        
+                  <li>
+                    <h4 class="zeta"><a href="http://zerosixthree.se/minimal-ui-meta-tag/">Quick tip: The minimal-ui meta tag</a></h4>
+                  </li>
+                    
+                    
+                        
+                  <li>
+                    <h4 class="zeta"><a href="http://zerosixthree.se/interview-bryan-jones-creator-of-codekit/">Interview with Bryan Jones, creator of CodeKit</a></h4>
+                  </li>
+                    
+                              </ul>
+          </div>
+        </footer>
+        <footer class="article-footer">
+           
+<div id="comments" class="comments-area">
+
+    <h3 class="epsilon">Comments ( 60 )</h3>
+
+  
+  <ol class="comment-list">
+    		<li class="comment even thread-even depth-1 parent" id="comment-33">
+				<div id="div-comment-33" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/729edf889ced7863dedba95452272bca?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://hugogiraudel.com' rel='external nofollow' class='url'>Hugo Giraudel</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-33">
+			January 15, 2014 at 12:46 pm</a>		</div>
+
+		<p>You shouldn&#8217;t do `#{$remSize}rem` since this will return a string and not a length. Instead prefer `$remSize + 0rem` or `$remSize * 1rem`.</p>
+<p>On-topic article: <a href="http://hugogiraudel.com/2013/09/03/use-lengths-not-strings/" rel="nofollow">http://hugogiraudel.com/2013/09/03/use-lengths-not-strings/</a>. </p>
+<p>Nice article by the way. Cheers. <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=33#respond' onclick='return addComment.moveForm( "div-comment-33", "33", "respond", "187" )' aria-label='Reply to Hugo Giraudel'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-34">
+				<div id="div-comment-34" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-34">
+			January 15, 2014 at 12:51 pm</a>		</div>
+
+		<p>Great point, Hugo!<br />
+I&#8217;ve updated the article now, thanks for the feedback <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=34#respond' onclick='return addComment.moveForm( "div-comment-34", "34", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-40">
+				<div id="div-comment-40" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/e24592d69a67cc66d8a82186e24a129e?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://tylergaw.com' rel='external nofollow' class='url'>Tyler Gaw</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-40">
+			January 15, 2014 at 2:18 pm</a>		</div>
+
+		<p>Lots of good stuff here, nicely done.</p>
+<p>One suggestion I&#8217;d make to #5 Transitions is to make a small change to allow for variable arguments.</p>
+<p>@mixin transition($args&#8230;) {}</p>
+<p>The &#8220;&#8230;&#8221; will allow you to pass the mixin multiple properties, instead of a single one.</p>
+<p>Here&#8217;s an example of it in use: <a href="http://codepen.io/tylergaw/pen/hzIfs" rel="nofollow">http://codepen.io/tylergaw/pen/hzIfs</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=40#respond' onclick='return addComment.moveForm( "div-comment-40", "40", "respond", "187" )' aria-label='Reply to Tyler Gaw'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-41">
+				<div id="div-comment-41" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-41">
+			January 15, 2014 at 2:28 pm</a>		</div>
+
+		<p>Good idea, Tyler. I&#8217;ve edited the transition mixin now, thanks!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=41#respond' onclick='return addComment.moveForm( "div-comment-41", "41", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even depth-2" id="comment-110">
+				<div id="div-comment-110" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/8cb4b239a079b94805cf4fde471d7867?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://finneas.net' rel='external nofollow' class='url'>Daniel</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-110">
+			January 19, 2014 at 10:21 am</a>		</div>
+
+		<p>Thanks, I didn&#8217;t know this one. Very flexible !</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=110#respond' onclick='return addComment.moveForm( "div-comment-110", "110", "respond", "187" )' aria-label='Reply to Daniel'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-42">
+				<div id="div-comment-42" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/482916b940b386548d026796921e089e?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">John Goerl</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-42">
+			January 15, 2014 at 3:19 pm</a>		</div>
+
+		<p>Here is how I do my breakpoints:</p>
+<p>@mixin bp($point) {<br />
+  @if $point == XXL {<br />
+    @media (min-width: 1600px) { @content; }<br />
+  }<br />
+  @else if $point == XL {<br />
+    @media (max-width: 1200px) { @content; }<br />
+  }<br />
+  @else if $point == L {<br />
+    @media (max-width: 1000px) { @content; }<br />
+  }<br />
+  @else if $point == M {<br />
+    @media (max-width: 850px)  { @content; }<br />
+  }<br />
+  @else if $point == S {<br />
+    @media (max-width: 710px)  { @content; }<br />
+  }<br />
+  @else if $point == XS {<br />
+    @media (max-width: 650px)  { @content; }<br />
+  }<br />
+  @else if $point == XXS {<br />
+    @media (max-width: 400px)  { @content; }<br />
+  }<br />
+}</p>
+<p>Those numbers change for each site, but I feel like it is a lot easier if you are doing a responsive design. Quicker just to type:</p>
+<p>.header {<br />
+   height: 100px;</p>
+<p>   @include bp(S) { height: 80px; }<br />
+}</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=42#respond' onclick='return addComment.moveForm( "div-comment-42", "42", "respond", "187" )' aria-label='Reply to John Goerl'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment even depth-2 parent" id="comment-47">
+				<div id="div-comment-47" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/a7731ed8d3034aee199454a0a23cb8e5?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://ericmmedia.com' rel='external nofollow' class='url'>Eric</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-47">
+			January 15, 2014 at 5:54 pm</a>		</div>
+
+		<p>If you need more than the standard small, medium, large breakpoints why not just make a fourth one that uses a variable for the width? <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=47#respond' onclick='return addComment.moveForm( "div-comment-47", "47", "respond", "187" )' aria-label='Reply to Eric'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-3" id="comment-82">
+				<div id="div-comment-82" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/68f6b81d861e6a928dbb81f992719876?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://brendansaunders.me' rel='external nofollow' class='url'>Brendan</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-82">
+			January 17, 2014 at 6:50 pm</a>		</div>
+
+		<p>I&#8217;ve trended toward doing exactly that:</p>
+<p>@mixin breakpoint($break) {<br />
+  @if $break == large {<br />
+    @media (max-width: 1420px) { @content; }<br />
+  }<br />
+  @else if $break == medium {<br />
+    @media (max-width: 1200px) { @content; }<br />
+  }<br />
+  @else if $break == small {<br />
+    @media (max-width: 760px)  { @content; }<br />
+  } @else {<br />
+    @media ($break)  { @content; }<br />
+  }<br />
+}</p>
+<p>used as such: </p>
+<p>body {<br />
+  background: pink;<br />
+  @include breakpoint(large) { background: red; }<br />
+  @include breakpoint(medium) { background: cyan; }<br />
+  @include breakpoint(small) { background: green; }<br />
+  @include breakpoint(&#8220;max-width: 480px&#8221;) { background: yellow; }<br />
+}</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=82#respond' onclick='return addComment.moveForm( "div-comment-82", "82", "respond", "187" )' aria-label='Reply to Brendan'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even depth-2" id="comment-23567">
+				<div id="div-comment-23567" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/4c058eb9dbf1672944893807119747fa?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://richfinelli.com' rel='external nofollow' class='url'>Rich Feinlli</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-23567">
+			January 14, 2015 at 10:21 pm</a>		</div>
+
+		<p>This is my favorite. Once I started doing media queries this way, it changed my life.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=23567#respond' onclick='return addComment.moveForm( "div-comment-23567", "23567", "respond", "187" )' aria-label='Reply to Rich Feinlli'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-52" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://labs.johannabates.com/2014/01/z63-8-sass-mixins-you-must-have-in-your-toolbox/' rel='external nofollow' class='url'>Z63 | 8 Sass mixins you must have in your toolbox &laquo; johannabates labs</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-61">
+				<div id="div-comment-61" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/5ababe0a84c34dbf4137562e1741de70?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://demosthenes.info/blog' rel='external nofollow' class='url'>Dudley Storey</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-61">
+			January 16, 2014 at 9:34 am</a>		</div>
+
+		<p>Nice work, Sebastian, and very useful. A few small corrections: you don&#8217;t need to generate -ms- prefixed code for transitions, animations and keyframes. IE has never used them: the browser&#8217;s support went straight to the CSS final version.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=61#respond' onclick='return addComment.moveForm( "div-comment-61", "61", "respond", "187" )' aria-label='Reply to Dudley Storey'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-62">
+				<div id="div-comment-62" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/f479fe45ac0f50c0bdbe35c5757986f7?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://alwaystwisted.com/' rel='external nofollow' class='url'>Stuart Robson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-62">
+			January 16, 2014 at 10:26 am</a>		</div>
+
+		<p>Some nice stuff here, I&#8217;m tending to let autoprefixer worry about any prefixes for things like transitions, flexbox, gradients etc.</p>
+<p>For media queries I use this mixin &#8211; <a href="http://alwaystwisted.com/post.php?s=2013-04-01-my-media-query-mixin" rel="nofollow">http://alwaystwisted.com/post.php?s=2013-04-01-my-media-query-mixin</a> &#8211; that uses the @content in Sass to allow for .lt-ie9 CSS rules.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=62#respond' onclick='return addComment.moveForm( "div-comment-62", "62", "respond", "187" )' aria-label='Reply to Stuart Robson'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment even depth-2" id="comment-105">
+				<div id="div-comment-105" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/747020301e8225e225e426bb120a1d05?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://mikevoermans.com' rel='external nofollow' class='url'>Mike Voermans</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-105">
+			January 18, 2014 at 10:42 pm</a>		</div>
+
+		<p>I agree. I wish more people knew about Autoprefixer &#8211; it does what they setup mixins to do, only better, because you don&#8217;t end up with unnecessary css declarations in the end and it can even clean up extra rules you don&#8217;t need like -ms- as mentioned in the previous comment.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=105#respond' onclick='return addComment.moveForm( "div-comment-105", "105", "respond", "187" )' aria-label='Reply to Mike Voermans'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-108">
+				<div id="div-comment-108" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3450a688026c0ac38021ae63750dd8d7?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Nik</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-108">
+			January 19, 2014 at 5:51 am</a>		</div>
+
+		<p>Maybe You Will find some interesting mixins here. <a href="http://polikin.github.io/core/" rel="nofollow">http://polikin.github.io/core/</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=108#respond' onclick='return addComment.moveForm( "div-comment-108", "108", "respond", "187" )' aria-label='Reply to Nik'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-117">
+				<div id="div-comment-117" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/4d10d001481c8878f06780df600c4f8d?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://scottohara.me' rel='external nofollow' class='url'>Scott</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-117">
+			January 19, 2014 at 5:09 pm</a>		</div>
+
+		<p>With some modifications to certain mixins, that have already been mentioned in the comments, I&#8217;d say this is a pretty solid list.</p>
+<p>The only thing I&#8217;d strike from here is the Opacity mixin.  I personally just hate adding/promoting the use of IE filters in stylesheets.</p>
+<p>Instead I&#8217;d add in a mixin for gradients, as those are still quite an annoyance to write out with all the vendor prefixes (and depending on how far back your browser support goes, the early drafts of the vendor prefixes that need to be in there)</p>
+<p>Also, one little nitpick.  This article is really about 7 mixins and a silent class (looking at you %clearfix) <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=117#respond' onclick='return addComment.moveForm( "div-comment-117", "117", "respond", "187" )' aria-label='Reply to Scott'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-151">
+				<div id="div-comment-151" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/6a2224c1f82049bad0646d2613c70ae6?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Viktor Bergehall</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-151">
+			January 21, 2014 at 8:51 am</a>		</div>
+
+		<p>I created two mixins for media queries handling a while ago. You can specify what breakpoints you want, what screen etc.</p>
+<p>@mixin max($bp, $min: &#8216;null&#8217;, $device: &#8216;screen&#8217;){<br />
+  @if $min == &#8216;null&#8217; {<br />
+    @media only #{$device} and (max-width: #{$bp}px){@content;}<br />
+  } @else {<br />
+    @media only #{$device} and (max-width: #{$bp}px) and (min-width: #{$max}px) {@content;}<br />
+  }<br />
+}</p>
+<p>@mixin min($bp, $max: &#8216;null&#8217;, $device: &#8216;screen&#8217;){<br />
+  @if $max == &#8216;null&#8217; {<br />
+    @media only #{$device} and (min-width: #{$bp}px){@content;}<br />
+  } @else {<br />
+    @media only #{$device} and (min-width: #{$bp}px) and (max-width: #{$max}px) {@content;}<br />
+  }<br />
+}</p>
+<p>Example:</p>
+<p>.example{<br />
+  background-color: red;</p>
+<p>  @include max(600){<br />
+    background-color: blue;<br />
+  }</p>
+<p>  @include min(601){<br />
+    background-color: yellow;<br />
+  }</p>
+<p>  //With both min &amp; max<br />
+  @include min(800, 900){<br />
+    background-color: green;<br />
+  }</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=151#respond' onclick='return addComment.moveForm( "div-comment-151", "151", "respond", "187" )' aria-label='Reply to Viktor Bergehall'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom even depth-2 parent" id="comment-153">
+				<div id="div-comment-153" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-153">
+			January 21, 2014 at 11:26 am</a>		</div>
+
+		<p>An issue I can see with this technique is that you might end up with a lot of different breakpoint sizes. Which can make the code difficult to maintain and hard to remember what pixel breakpoints that you&#8217;ve set earlier.</p>
+<p>I prefer to set a maximum of 3-4 different ones with more rememberable names for this reason. And I would also recommend setting the breakpoints in em&#8217;s instead of pixels to enable zoom support. You can read more about that <a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/" rel="nofollow">here.</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=153#respond' onclick='return addComment.moveForm( "div-comment-153", "153", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-3" id="comment-155">
+				<div id="div-comment-155" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/6a2224c1f82049bad0646d2613c70ae6?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Viktor Bergehall</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-155">
+			January 21, 2014 at 1:03 pm</a>		</div>
+
+		<p>I don&#8217;t think it&#8217;s hard to maintain as long as you keep all queries associated with the element at one place/partial.</p>
+<p>There are off course pros and cons but I often find that when I&#8217;m developing with specific breakpoint sizes, I also get specific layouts. I usually implement a certain behavior and then scale it to the point where the behavior isn&#8217;t doing the trick anymore. I think that that should be the breakpoint, rather than a absolute value. Maybe a combination of the two is a good solution</p>
+<p>Regarding switching to relative values, I think that&#8217;s a great idea!<br />
+I put it up on codepen:  <a href="http://codepen.io/viktor/pen/xsecC" rel="nofollow">http://codepen.io/viktor/pen/xsecC</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=155#respond' onclick='return addComment.moveForm( "div-comment-155", "155", "respond", "187" )' aria-label='Reply to Viktor Bergehall'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-415">
+				<div id="div-comment-415" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/6327c68393f9d90a9b5fb21caf2bb7d6?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://front-back.com' rel='external nofollow' class='url'>jkneb</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-415">
+			January 29, 2014 at 9:59 am</a>		</div>
+
+		<p>Hi great list! They&#8217;re all super handy. Thanks for sharing <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+<p>Be careful with #4 and #5, they are useless if you try to pass a vendor prefixed property. For instance, something like this:<br />
+    @include keyframes(slide-down) {<br />
+        0% { -wtf-transform: translateY(100%); }<br />
+        90% { -wtf-transform: translateY(0%); }<br />
+     }<br />
+or<br />
+    @include transition(-wtf-transform .3s ease);<br />
+This wouldn&#8217;t work cross browser because the only way to pass vendor prefixed properties into the mixin&#8217;s @content variable would be to write a complexe @if @else logic to resolve which vendor should be applied to which property. Which is possible,  Compass and Bourbon both have complicated *prefixer* mixins to deal with this.</p>
+<p>Personally, I switched to Autoprefixer (which is a postprocessor, I use it with Grunt). It handles this *issue* like a charm. Now, I can write my animations and transitions the *standard css way*, without even thinking about vendor prefixes, I don&#8217;t even need @mixins for animation, transition, and keyframes.</p>
+<p>So when I write this in my .scss files:<br />
+    transition: transform .3s ease;<br />
+it is autoprefixed like this in the final .css file:<br />
+    -webkit-transition: -webkit-transform .3s ease;<br />
+    -moz-transition: -moz-transform .3s ease;<br />
+    -ms-transition: -ms-transform .3s ease;<br />
+    transition: transform .3s ease;</p>
+<p>You can even customize how many browsers versions you want to support (it uses Caniuse.com API to resolve vendor prefixes).</p>
+<p>We shouldn&#8217;t waste any more time with vendors ^^</p>
+<p>Best!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=415#respond' onclick='return addComment.moveForm( "div-comment-415", "415", "respond", "187" )' aria-label='Reply to jkneb'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-443" class="pingback odd alt thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.dtelepathy.com/blog/inspiration/internet-hoarding-12' rel='external nofollow' class='url'>Internet Hoarding #12</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-444">
+				<div id="div-comment-444" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/516c4d8781998008566c10baa8844420?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://jamessteinbach.com' rel='external nofollow' class='url'>James Steinbach</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-444">
+			January 30, 2014 at 3:21 pm</a>		</div>
+
+		<p>I use px-rem conversions for any measure I want to have the fluidity and ease of rem with IE fallback: element width, height, margin, padding, etc. (I know I could do those in ems based on element font-size, but this keeps math easier. To handle multiple values for padding/margin, I&#8217;ve cobbled together the following mixin &amp; function:</p>
+<p>@function strip-unit($num) {<br />
+	@if $num == auto or $num == inherit {<br />
+		@return $num;<br />
+	} @else {<br />
+		@return $num / ($num * 0 + 1);<br />
+	}<br />
+}</p>
+<p>@mixin px-rem($property, $values&#8230;) {<br />
+	$max: length($values);<br />
+	$pxValues: &#8221;;<br />
+	$remValues: &#8221;;</p>
+<p>	@for $i from 1 through $max {<br />
+		$value: strip-unit(nth($values, $i));</p>
+<p>		@if $value == auto or $value == inherit or $value == 0 {<br />
+			$pxValues: #{$pxValues + $value};<br />
+		} @else {<br />
+			$pxValues: #{$pxValues + $value}px;<br />
+		}		</p>
+<p>		@if $i &lt; $max {<br />
+			$pxValues: #{$pxValues + &quot; &quot;};<br />
+		}<br />
+	} </p>
+<p>	@for $i from 1 through $max {<br />
+		$value: strip-unit(nth($values, $i));<br />
+		@if $value == auto or $value == inherit or $value == 0 {<br />
+			$remValues: #{$remValues + $value};<br />
+		} @else {<br />
+			$remValues: #{$remValues + $value / 10}rem;<br />
+		}<br />
+		@if $i &lt; $max {<br />
+			$remValues: #{$remValues + &quot; &quot;};<br />
+		}<br />
+	} </p>
+<p>	#{$property}: $pxValues;<br />
+	#{$property}: $remValues;<br />
+}</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=444#respond' onclick='return addComment.moveForm( "div-comment-444", "444", "respond", "187" )' aria-label='Reply to James Steinbach'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-2" id="comment-752">
+				<div id="div-comment-752" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/516c4d8781998008566c10baa8844420?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://jamessteinbach.com' rel='external nofollow' class='url'>James Steinbach</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-752">
+			February 10, 2014 at 9:08 pm</a>		</div>
+
+		<p>Here&#8217;s a live demo of my version of the px-rem mixin in action: <a href="http://sassmeister.com/gist/8923968" rel="nofollow">http://sassmeister.com/gist/8923968</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=752#respond' onclick='return addComment.moveForm( "div-comment-752", "752", "respond", "187" )' aria-label='Reply to James Steinbach'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-643">
+				<div id="div-comment-643" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/6509f573ccf0093ce5e98ac1fc793047?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Bart Barczak</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-643">
+			February 6, 2014 at 2:18 pm</a>		</div>
+
+		<p>good stuff, beside of mixins presented by you, i use also multiple arg. mixin fo box-shadow and for opacity <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" /></p>
+<p>@mixin box-shadow($shadow&#8230;) {<br />
+-webkit-box-shadow: $shadow;<br />
+     -moz-box-shadow: $shadow;<br />
+          box-shadow: $shadow;<br />
+}</p>
+<p>@mixin opacity($opacity) {<br />
+  opacity: $opacity;<br />
+  filter: alpha(opacity=$opacity*100);<br />
+}</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=643#respond' onclick='return addComment.moveForm( "div-comment-643", "643", "respond", "187" )' aria-label='Reply to Bart Barczak'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-784">
+				<div id="div-comment-784" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0a586172a145e229f88f41db2106068f?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Quinton Aiken</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-784">
+			February 11, 2014 at 10:10 pm</a>		</div>
+
+		<p>I really like this retina image mixin:</p>
+<p><a href="http://chrisltd.com/blog/2013/05/retina-images-sass/" rel="nofollow">http://chrisltd.com/blog/2013/05/retina-images-sass/</a></p>
+<p>If you are working with compass as well, you can change the url to image-url to really simplify things.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=784#respond' onclick='return addComment.moveForm( "div-comment-784", "784", "respond", "187" )' aria-label='Reply to Quinton Aiken'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-791" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://blog.teamtreehouse.com/sass-mixins-javascript-coding-git-tips-treehouse-show-episode-77' rel='external nofollow' class='url'>Sass Mixins, JavaScript Coding, Git Tips | The Treehouse Show Episode 77 - Treehouse Blog</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-794" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://apeboystudio.com/sass-mixins-javascript-coding-git-tips-the-treehouse-show-episode-77/' rel='external nofollow' class='url'>Ape Boy Studio | Sass Mixins, JavaScript Coding, Git Tips | The Treehouse Show Episode 77</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-872">
+				<div id="div-comment-872" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/bd4d48cfd5f54a205f4c95331d5cb2f1?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://ajwebdesigner.in' rel='external nofollow' class='url'>Steel</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-872">
+			February 17, 2014 at 10:48 am</a>		</div>
+
+		<p>I loved your &#8216;I miss you&#8217; and im sorry I copied it to my website <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=872#respond' onclick='return addComment.moveForm( "div-comment-872", "872", "respond", "187" )' aria-label='Reply to Steel'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-883" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.welcomebrand.co.uk/thoughts/learning-sass-by-refactoring/' rel='external nofollow' class='url'>Learning Sass by refactoring | welcomebrand</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-890">
+				<div id="div-comment-890" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/5d3494e83a0bb70a41980dc4e024cda6?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://hackingui.com' rel='external nofollow' class='url'>David Tintner</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-890">
+			February 18, 2014 at 4:24 pm</a>		</div>
+
+		<p>Great article! love the svg with fallback mixin. I have a mixin in my utility belt for resizing sprites that could be really helpful to compliment that. <a href="http://hackingui.com/front-end/10-best-scss-utilities/" rel="nofollow">http://hackingui.com/front-end/10-best-scss-utilities/</a><br />
+When I get the chance will probably do some refactoring to incorporate SVG as well</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=890#respond' onclick='return addComment.moveForm( "div-comment-890", "890", "respond", "187" )' aria-label='Reply to David Tintner'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-893">
+				<div id="div-comment-893" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/cd32d17c95d3bfb352504c36462b98bd?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://sitnik.ru/' rel='external nofollow' class='url'>Andrey Sitnik</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-893">
+			February 18, 2014 at 7:29 pm</a>		</div>
+
+		<p>Grunt Pixrem is much better as polyfill for rem units. It support any propetties and you can just write common CSS, pixrem automatically find rem units: <a href="https://github.com/robwierzbowski/grunt-pixrem" rel="nofollow">https://github.com/robwierzbowski/grunt-pixrem</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=893#respond' onclick='return addComment.moveForm( "div-comment-893", "893", "respond", "187" )' aria-label='Reply to Andrey Sitnik'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-896" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://infovore.org/archives/2014/02/19/links-for-february-18th-4/' rel='external nofollow' class='url'>Infovore &raquo; Links for February 18th</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-900">
+				<div id="div-comment-900" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/aba14ca6104ad863c47759bc1a2fbbbe?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://stderr.timfischbach.de' rel='external nofollow' class='url'>Tim Fischbach</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-900">
+			February 19, 2014 at 7:29 am</a>		</div>
+
+		<p>I like to use mixins to ease the use of icon fonts. Here&#8217;s a post I wrote explaining the idea: <a href="http://stderr.timfischbach.de/2013/09/01/sass-mixins-and-icon-fonts.html" rel="nofollow">http://stderr.timfischbach.de/2013/09/01/sass-mixins-and-icon-fonts.html</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=900#respond' onclick='return addComment.moveForm( "div-comment-900", "900", "respond", "187" )' aria-label='Reply to Tim Fischbach'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-901">
+				<div id="div-comment-901" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/051dbe29a972707cde167602b38c9778?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://bittersmann.de' rel='external nofollow' class='url'>Gunnar Bittersmann</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-901">
+			February 19, 2014 at 9:20 am</a>		</div>
+
+		<p>Re 4 Animations and keyframes and 5 Transitions: The idea behind vendor prefixes was not to include every imaginable prefix.</p>
+<p>There has never been a -ms- prefix for neither the keyframes at-rule nor the animation and transition properties (except for pre-release IE10 beta versions, maybe). IE ≤ 9 do not support animations and transitions; IE ≥ 10 support them prefix-free.</p>
+<p>Firefox has also supported animations and transitions prefix-free for quite some time now, no need for -moz- anymore. The latest Presto Opera has also dropped the -o- prefix. So the only remaining prefix is -webkit-.</p>
+<p>The keyframes, animation and transition mixins should not generate useless declarations, but only use the -webkit- prefix and the prefix-free variants (in that order).</p>
+<p>cf. <a href="http://caniuse.com/css-transitions" rel="nofollow">http://caniuse.com/css-transitions</a> and <a href="http://caniuse.com/css-animation" rel="nofollow">http://caniuse.com/css-animation</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=901#respond' onclick='return addComment.moveForm( "div-comment-901", "901", "respond", "187" )' aria-label='Reply to Gunnar Bittersmann'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-902">
+				<div id="div-comment-902" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-902">
+			February 19, 2014 at 10:02 am</a>		</div>
+
+		<p>I agree that you should only use the necessary vendor prefixes. But I also think that using all prefixes, even the uncessecary ones, do more good than harm.<br />
+Tools such as Compass and Grunts autoprefixer plugin are great in this regard, where the necessary vendor prefixes are always up to date and used.</p>
+<p>But I think in general, using all vendor prefixes instead of the required ones, though bloating your CSS with unecessary lines of code, still is better than manually having to go through your mixins to make sure they are up to date every other week. And you still catch some old/beta version of e.g Firefox that still uses the prefixed property.</p>
+<p>But as I said, this article focues on Sass without the help of Compass or Grunt. If you already use those tools in your project the mixins you mentioned shouldn&#8217;t be used at all since they take care of them automatically.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=902#respond' onclick='return addComment.moveForm( "div-comment-902", "902", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-903">
+				<div id="div-comment-903" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/28216ffae287bc4c0a8c2121f7ac3c11?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://pixelize.be' rel='external nofollow' class='url'>Gauthier</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-903">
+			February 19, 2014 at 10:03 am</a>		</div>
+
+		<p>Good list Sebastien but for the clearfix mixin I think we could gather before &amp; after as they have the same rules like :</p>
+<p>%clearfix {<br />
+  *zoom: 1;</p>
+<p>  &amp;:before,<br />
+  &amp;:after {<br />
+    display: table;<br />
+    content: &#8220;&#8221;;<br />
+  }</p>
+<p>  &amp;:after {<br />
+    clear: both;<br />
+  }<br />
+}</p>
+<p>What you think ?</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=903#respond' onclick='return addComment.moveForm( "div-comment-903", "903", "respond", "187" )' aria-label='Reply to Gauthier'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-904">
+				<div id="div-comment-904" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-904">
+			February 19, 2014 at 10:05 am</a>		</div>
+
+		<p>Good point, Gauthier! I&#8217;ve updated the post now <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=904#respond' onclick='return addComment.moveForm( "div-comment-904", "904", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-905">
+				<div id="div-comment-905" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/28216ffae287bc4c0a8c2121f7ac3c11?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://pixelize.be' rel='external nofollow' class='url'>Gauthier</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-905">
+			February 19, 2014 at 10:11 am</a>		</div>
+
+		<p>Thanks, will looking forward your new articles by now. I didn&#8217;t know your website until today <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> Good to see people which work daily with Sass !</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=905#respond' onclick='return addComment.moveForm( "div-comment-905", "905", "respond", "187" )' aria-label='Reply to Gauthier'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-912">
+				<div id="div-comment-912" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/08182d53361d7ecbb602cb62c8fafe1a?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://williamdodson.co/' rel='external nofollow' class='url'>William Dodson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-912">
+			February 19, 2014 at 10:35 pm</a>		</div>
+
+		<p>Hi Sebastian,<br />
+Came across a tweet from Changelog about this post. Nice work! It&#8217;s amazing how little things like these snips help to speed up our work flow. It&#8217;s also cool to see I&#8217;m not the only one who uses the &#8220;bp-size&#8221; name for breakpoints. <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+<p>For anyone who is interested I created a GitHub Gist with all of these snips as separate Sass files along with a simple set of usage instructions:</p>
+<p><a href="https://gist.github.com/obxdesignworks/9102733" rel="nofollow">https://gist.github.com/obxdesignworks/9102733</a></p>
+<p>Thanks again and rock on!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=912#respond' onclick='return addComment.moveForm( "div-comment-912", "912", "respond", "187" )' aria-label='Reply to William Dodson'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-913">
+				<div id="div-comment-913" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1ef8ff87ca55324d0430c1a75f78cb00?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://mikemai.net' rel='external nofollow' class='url'>Mike Mai</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-913">
+			February 19, 2014 at 10:50 pm</a>		</div>
+
+		<p>I noticed when I navigate away from current tab, your page title changes to &#8220;I miss you &lt;3 | &#8230;&quot;. That&#039;s awesome.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=913#respond' onclick='return addComment.moveForm( "div-comment-913", "913", "respond", "187" )' aria-label='Reply to Mike Mai'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-926">
+				<div id="div-comment-926" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/48f401db1d3dd3ef2a29b917f42edc8b?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://frederickweiss.com' rel='external nofollow' class='url'>Frederick</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-926">
+			February 21, 2014 at 9:10 pm</a>		</div>
+
+		<p>I can not get enough SASS, I &#8220;love me some tasty SASS&#8221;. I clearfixate on it all the time. SASS is all I dream about in my rem(not pixel) sleep.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=926#respond' onclick='return addComment.moveForm( "div-comment-926", "926", "respond", "187" )' aria-label='Reply to Frederick'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-954" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://jjserver.net/sass-mixins-javascript-coding-git-tips-the-treehouse-show-episode-77/' rel='external nofollow' class='url'>Sass Mixins, JavaScript Coding, Git Tips | The Treehouse Show Episode 77 | JJ SERVER</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-961" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.welcomebrand.co.uk/thoughts/the-big-list-of-design-and-development-resources/' rel='external nofollow' class='url'>The big list of design and development resources | welcomebrand</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-2548">
+				<div id="div-comment-2548" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/7bd274d2c4617ebac4df0ee0139af525?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://kirkbater.com' rel='external nofollow' class='url'>Kirk Bater</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-2548">
+			April 8, 2014 at 4:50 pm</a>		</div>
+
+		<p>What exactly is the point of creating a placeholder in number 8 when you just create a class called &#8220;.visually-hidden&#8221; and extend the placeholder there.</p>
+<p>Wouldn&#8217;t it be more effective, and semantic to just make the class &#8220;.visually-hidden&#8221; and apply that to any of the html that you want to hide, visually, rather than add the extra complexity of creating the placeholder just to extend that in the class?</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=2548#respond' onclick='return addComment.moveForm( "div-comment-2548", "2548", "respond", "187" )' aria-label='Reply to Kirk Bater'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-2779">
+				<div id="div-comment-2779" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/326f0e01fd9811d5ecc4a6b9fad1706a?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='https://netguru.co/blog' rel='external nofollow' class='url'>Ania</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-2779">
+			April 15, 2014 at 11:05 am</a>		</div>
+
+		<p>Good write up! Recently, at netguru we&#8217;ve noticed that in about 85% of cases, we group devices in two groups: phones and tablets + desktops an run a small experiment.  To reduce code to the minimum, we&#8217;ve created a set of mixins- more at:<br />
+<a href="https://netguru.co/blog/posts/how-sass-3-dot-3-will-solve-your-rwd-problems" rel="nofollow">https://netguru.co/blog/posts/how-sass-3-dot-3-will-solve-your-rwd-problems</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=2779#respond' onclick='return addComment.moveForm( "div-comment-2779", "2779", "respond", "187" )' aria-label='Reply to Ania'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-2960">
+				<div id="div-comment-2960" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/9d69b0455f7f116b9de1ea4e2564677c?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://fidev.co.uk' rel='external nofollow' class='url'>Chris</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-2960">
+			April 28, 2014 at 1:33 pm</a>		</div>
+
+		<p>Great article &#8211; this list is going to help with my starter themes. Thanks</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=2960#respond' onclick='return addComment.moveForm( "div-comment-2960", "2960", "respond", "187" )' aria-label='Reply to Chris'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5243">
+				<div id="div-comment-5243" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/f5960d6f3735f8b1dd94cfb87e0338b6?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Vince</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-5243">
+			May 21, 2014 at 2:24 pm</a>		</div>
+
+		<p>Why didn&#8217;t you use a normal class for the last one? No need to make it a placeholder.</p>
+<p>You could add the class to the element you need or even extend the class if you like.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=5243#respond' onclick='return addComment.moveForm( "div-comment-5243", "5243", "respond", "187" )' aria-label='Reply to Vince'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-6301">
+				<div id="div-comment-6301" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/cfd2e8339584feb75c767f3794f2e662?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Lukas</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-6301">
+			June 4, 2014 at 6:52 pm</a>		</div>
+
+		<p>You have @2x.png fallback for svg, but when do we need it?</p>
+<p>I mean what device with retina display cant display SVG&#8217;s? </p>
+<p>Accourding to <a href="http://caniuse.com/#feat=svg" rel="nofollow">http://caniuse.com/#feat=svg</a> only IE8, and I have never seen retina display running IE.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=6301#respond' onclick='return addComment.moveForm( "div-comment-6301", "6301", "respond", "187" )' aria-label='Reply to Lukas'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-8084" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://theinfinitestudio.com/uncategorized/a-simple-responsive-grid-made-even-better-with-sass/' rel='external nofollow' class='url'>A Simple Responsive Grid, Made Even Better With Sass - The Infinite Studio</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-8813">
+				<div id="div-comment-8813" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/1a8ef93be6fa5e0c482ad44281f75770?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='https://twitter.com/robbiebardijn' rel='external nofollow' class='url'>Robbie Bardijn</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-8813">
+			July 22, 2014 at 2:19 pm</a>		</div>
+
+		<p>Ok for the first 3.</p>
+<p>But the rest already sits in gems like:<br />
+compass,  compass-h5bp, ceaser-easing, animation, etc</p>
+<p>So no need to copy functionalities.<br />
+Why complicate your own codebase, when you can use gems or libs that are not included in your project.</p>
+<p>Otherwise good article man.</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=8813#respond' onclick='return addComment.moveForm( "div-comment-8813", "8813", "respond", "187" )' aria-label='Reply to Robbie Bardijn'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-2" id="comment-8844">
+				<div id="div-comment-8844" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/5c06e5b8a9f4f0b171b7371e0c6e6459?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Sean</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-8844">
+			August 1, 2014 at 7:57 pm</a>		</div>
+
+		<p>You missed his intro where he states, &#8220;Some of the mixins below are already included in the Compass library, but since I prefer not to use Compass in my projects, I decided to write them myself.&#8221;</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=8844#respond' onclick='return addComment.moveForm( "div-comment-8844", "8844", "respond", "187" )' aria-label='Reply to Sean'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-9471">
+				<div id="div-comment-9471" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/326f0e01fd9811d5ecc4a6b9fad1706a?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='https://netguru.co/blog' rel='external nofollow' class='url'>AnAn</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-9471">
+			August 13, 2014 at 1:24 pm</a>		</div>
+
+		<p>In the post below you can find a couple of useful mixins (sizing, shapes, positioning):</p>
+<p><a href="https://netguru.co/blog/posts/kick-off-ui-development-with-these-simple-steps" rel="nofollow">https://netguru.co/blog/posts/kick-off-ui-development-with-these-simple-steps</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=9471#respond' onclick='return addComment.moveForm( "div-comment-9471", "9471", "respond", "187" )' aria-label='Reply to AnAn'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-9809">
+				<div id="div-comment-9809" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/5a8bbccfd45ac4336f76a9e52631742f?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://users.atw.hu/f1miskolci-liga/userinfo.php?uid=62' rel='external nofollow' class='url'>bondage</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-9809">
+			August 17, 2014 at 1:12 pm</a>		</div>
+
+		<p>Oh my goodness! Awesome article dude! Thank you, However I am experiencing issues with your RSS.<br />
+I don&#8217;t know the reason why I cannot join it. Is there anyone else having similar RSS issues?</p>
+<p>Anyone who knows the solution will you kindly respond?<br />
+Thanks!!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=9809#respond' onclick='return addComment.moveForm( "div-comment-9809", "9809", "respond", "187" )' aria-label='Reply to bondage'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-12439" class="pingback even thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.cameronalcorn.com/top-10-time-saving-sass-mixins/' rel='external nofollow' class='url'>Top 10 Time Saving Sass Mixins | Cameron Alcorn</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-12502">
+				<div id="div-comment-12502" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/82df0905b2d340c2e66ab5dc03bdbeb5?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://bohea.co.uk' rel='external nofollow' class='url'>Dan Bohea</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-12502">
+			October 26, 2014 at 4:32 pm</a>		</div>
+
+		<p>Creating a mixin called &#8220;background-image&#8221; is asking for trouble if you&#8217;re using Compass (it already has a mixin with that name).</p>
+<p>Think about calling this one something else (I opted for &#8220;bg-img&#8221;).</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=12502#respond' onclick='return addComment.moveForm( "div-comment-12502", "12502", "respond", "187" )' aria-label='Reply to Dan Bohea'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-12514">
+				<div id="div-comment-12514" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/a3f5d9e68f951dfe9913fa5fbe922793?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Chris</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-12514">
+			November 2, 2014 at 12:36 pm</a>		</div>
+
+		<p>Really interesting, thank you <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+<p>There is a small mistake into the &#8220;Breakpoints&#8221; example.</p>
+<p>The usage that you given should be</p>
+<p>.sidebar {<br />
+  width: 60%<br />
+  float: left;<br />
+  margin: 0 2% 0 0;<br />
+  @include bp-small {<br />
+    width: 100%;<br />
+    float: none;<br />
+    margin: 0;<br />
+  }<br />
+}</p>
+<p>The &#8220;;&#8221; is missing at the end of the line of &#8220;float:left&#8221; property, and this is creating an error when compiling the SCSS file.</p>
+<p>Chris</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=12514#respond' onclick='return addComment.moveForm( "div-comment-12514", "12514", "respond", "187" )' aria-label='Reply to Chris'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-12538">
+				<div id="div-comment-12538" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-12538">
+			November 19, 2014 at 10:06 am</a>		</div>
+
+		<p>Thanks for pointing that out, it&#8217;s fixed now <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=12538#respond' onclick='return addComment.moveForm( "div-comment-12538", "12538", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-12624">
+				<div id="div-comment-12624" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/7b4cbcb46b423981b7889419f51242fd?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://gillesbertaux.com/andy' rel='external nofollow' class='url'>Gilles</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-12624">
+			November 19, 2014 at 4:54 pm</a>		</div>
+
+		<p>Hey Sebastian, thank you for this post. Lot of cool stuff.  </p>
+<p>It inspired me to create a collection of SASS mixins myself, and I released Andy.scss today. I mentioned you in the credits. I thought you should know. Cheers!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=12624#respond' onclick='return addComment.moveForm( "div-comment-12624", "12624", "respond", "187" )' aria-label='Reply to Gilles'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom odd alt depth-2" id="comment-12908">
+				<div id="div-comment-12908" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-12908">
+			November 20, 2014 at 4:21 pm</a>		</div>
+
+		<p>Glad to hear you found it useful, and thanks for the shoutout in the credits <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=12908#respond' onclick='return addComment.moveForm( "div-comment-12908", "12908", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-23168" class="pingback even thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://tenalisreenivas.wordpress.com/2014/12/22/5/' rel='external nofollow' class='url'>tenalisreenivas</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-23542">
+				<div id="div-comment-23542" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/07a85af165fbc907aa9d0755357f97a9?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://www.steffancarrington.com' rel='external nofollow' class='url'>Steffan Carrington</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-23542">
+			December 27, 2014 at 11:02 pm</a>		</div>
+
+		<p>Very handy tutorial, been looking for a useful SVG mixin. Thanks for sharing!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=23542#respond' onclick='return addComment.moveForm( "div-comment-23542", "23542", "respond", "187" )' aria-label='Reply to Steffan Carrington'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-25210">
+				<div id="div-comment-25210" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/503adf9a0e81398fb5ccc99d9049e660?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://gregmatys.com' rel='external nofollow' class='url'>gregmatys</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-25210">
+			January 28, 2015 at 5:06 pm</a>		</div>
+
+		<p>Ad. 4. Animations and keyframes:<br />
+should be:<br />
+ @-webkit-keyframes #{$animation-name} {</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=25210#respond' onclick='return addComment.moveForm( "div-comment-25210", "25210", "respond", "187" )' aria-label='Reply to gregmatys'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-2 parent" id="comment-48857">
+				<div id="div-comment-48857" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/26dce3088d91e0fcb7050b31d21dfa7a?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">James Pero</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-48857">
+			March 25, 2015 at 6:53 pm</a>		</div>
+
+		<p>I&#8217;ve having some issues compiling the animation mixin. I keep getting a compile error about invalid CSS after @-webkit-keyframes, expected &#8220;}&#8221;.</p>
+<p>Anyone have any idea why I&#8217;m seeing this issue? Anyone else seeing this?</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=48857#respond' onclick='return addComment.moveForm( "div-comment-48857", "48857", "respond", "187" )' aria-label='Reply to James Pero'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment even depth-3 parent" id="comment-55355">
+				<div id="div-comment-55355" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/2b9985c7c312b61d44cd1326b4070b5c?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://www.golightlyplus.com' rel='external nofollow' class='url'>Andrew Golightly</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-55355">
+			May 16, 2015 at 6:48 pm</a>		</div>
+
+		<p>I found it works, if it change the @mixin to</p>
+<p>@mixin keyframes($animation-name) {<br />
+    @-webkit-keyframes #{$animation-name} {<br />
+        @content;<br />
+    }<br />
+    @-moz-keyframes #{$animation-name} {<br />
+        @content;<br />
+    }<br />
+    @-ms-keyframes #{$animation-name} {<br />
+        @content;<br />
+    }<br />
+    @-o-keyframes #{$animation-name} {<br />
+        @content;<br />
+    }<br />
+    @keyframes #{$animation-name} {<br />
+        @content;<br />
+    }<br />
+}</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=55355#respond' onclick='return addComment.moveForm( "div-comment-55355", "55355", "respond", "187" )' aria-label='Reply to Andrew Golightly'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-4" id="comment-55369">
+				<div id="div-comment-55369" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/2b9985c7c312b61d44cd1326b4070b5c?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://www.golightlyplus.com' rel='external nofollow' class='url'>Andrew Golightly</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-55369">
+			May 16, 2015 at 9:00 pm</a>		</div>
+
+		<p>GitHub Gist</p>
+<p><a href="https://gist.github.com/magician11/135d4f2cfffea828c828" rel="nofollow">https://gist.github.com/magician11/135d4f2cfffea828c828</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=55369#respond' onclick='return addComment.moveForm( "div-comment-55369", "55369", "respond", "187" )' aria-label='Reply to Andrew Golightly'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-sebastianekstrom even depth-4" id="comment-67221">
+				<div id="div-comment-67221" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-67221">
+			October 19, 2015 at 8:34 am</a>		</div>
+
+		<p>I&#8217;ve updated the article now, thanks for the feedback!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=67221#respond' onclick='return addComment.moveForm( "div-comment-67221", "67221", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-27594" class="pingback odd alt thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://redline.hippy.jp/restart/sass/post-404.php' rel='external nofollow' class='url'>REDLINE MAGAZINE | Sassの勉強 #07　柔軟なスタイル定義が出来る「@mixin」</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-38536" class="pingback even thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://wiki.tdascreative.com/2015/03/03/week-of-21414/' rel='external nofollow' class='url'>Week of 2/14/14 &#8211; TDAS Creative Wiki</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-46187">
+				<div id="div-comment-46187" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/0f2bc6113d569ab2e44579c04044a643?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://ricardozea.me?zerosixthree.se' rel='external nofollow' class='url'>Ricardo Zea</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-46187">
+			March 19, 2015 at 7:40 pm</a>		</div>
+
+		<p>This is awesome information, especially the rem font size with pixel fallback mixin.</p>
+<p>I personally don&#8217;t worry about vendor prefixes anymore since I started using Autoprefixer (<a href="https://github.com/postcss/autoprefixer" rel="nofollow">https://github.com/postcss/autoprefixer</a>). All I do is write the CSS property or value in their normal form and Autoprefixer takes care of the rest after compilation (SCSS).</p>
+<p>Regarding named media queries, they work well for device-specific breakpoints since you&#8217;d only be creating a handful of them, hence, relatively easy to remember.</p>
+<p>But if you&#8217;re creating content-based breakpoints, then you&#8217;re very likely to create much more than a handful of breakpoints and remembering which breakpoint “breakpoint-a-really-large-computer-machine” is, becomes more a hassle than help.</p>
+<p>So I now use this simple mixin:</p>
+<p>@mixin mobile-first($media) {<br />
+  @media (min-width: $media) { @content; }<br />
+}</p>
+<p>Usage:</p>
+<p>header {<br />
+  width: 100%; //Mobile-first property<br />
+  @include mobile-first(40em) { //640px<br />
+    width: 50%; //Large-screens property<br />
+  }<br />
+}</p>
+<p>Thanks for such awesome tips <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=46187#respond' onclick='return addComment.moveForm( "div-comment-46187", "46187", "respond", "187" )' aria-label='Reply to Ricardo Zea'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-48699">
+				<div id="div-comment-48699" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/e13fadfe3cda652721c9441f9161fc20?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://davidhellmann.com' rel='external nofollow' class='url'>David Hellmann</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-48699">
+			March 24, 2015 at 5:10 pm</a>		</div>
+
+		<p>Here is my Sass Mixin for Breakpoints.</p>
+<p>I have a map with some fixed Breakpoints but I can use any size (one time breakpints) and that makes this shit very useful for any scenario</p>
+<p><a href="https://medium.com/@davidhellmann/my-sass-breakpoint-mixin-c974470571d1" rel="nofollow">https://medium.com/@davidhellmann/my-sass-breakpoint-mixin-c974470571d1</a></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=48699#respond' onclick='return addComment.moveForm( "div-comment-48699", "48699", "respond", "187" )' aria-label='Reply to David Hellmann'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li id="comment-53112" class="pingback odd alt thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://kunalkamble.com/useful-links-for-sass/' rel='external nofollow' class='url'>Useful links for SASS - Kunal Kamble</a> 			</div>
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-62423">
+				<div id="div-comment-62423" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/93d5e83a07329d8bcb689990d34c698a?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='https://github.com/eyeamaman' rel='external nofollow' class='url'>eyeamaman</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-62423">
+			August 5, 2015 at 9:52 pm</a>		</div>
+
+		<p>I got one for you: how about this prefixerPlus!!!!</p>
+<p>@mixin prefixerPlus($name, $value) {<br />
+  -webkit-#{$name}: $value;<br />
+  -moz-#{$name}: $value;<br />
+  -ms-#{$name}: $value;<br />
+  -o-#{$name}: $value;<br />
+  #{$name}: $value;<br />
+}</p>
+<p>@include prefixerPlus(transition, padding-left 0.3s ease-in-out);</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=62423#respond' onclick='return addComment.moveForm( "div-comment-62423", "62423", "respond", "187" )' aria-label='Reply to eyeamaman'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-67159">
+				<div id="div-comment-67159" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/8d8068d26dbafb59ed19c37297138f14?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">sminutoli</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-67159">
+			October 16, 2015 at 10:54 pm</a>		</div>
+
+		<p>It would be nice to fix the &#8220;keyframes&#8221; snippet using the #{$animation-name} as pointed Andrew Golightly</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=67159#respond' onclick='return addComment.moveForm( "div-comment-67159", "67159", "respond", "187" )' aria-label='Reply to sminutoli'>Reply</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment byuser comment-author-sebastianekstrom even depth-2" id="comment-67220">
+				<div id="div-comment-67220" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/3b72e7a509ec2bac22bc6b75acb4104d?s=34&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn"><a href='http://zerosixthree.se' rel='external nofollow' class='url'>Sebastian Ekström</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-67220">
+			October 19, 2015 at 8:34 am</a>		</div>
+
+		<p>I&#8217;ve updated the article now, thanks <img src="http://zerosixthree.se/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /></p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=67220#respond' onclick='return addComment.moveForm( "div-comment-67220", "67220", "respond", "187" )' aria-label='Reply to Sebastian Ekström'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-72137">
+				<div id="div-comment-72137" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/898b1a6172652b473543985d9fdf770d?s=34&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D34&amp;r=G' class='avatar avatar-34 photo' height='34' width='34' />			<cite class="fn">Wazzo</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/#comment-72137">
+			February 23, 2016 at 3:37 am</a>		</div>
+
+		<p>Thanks for the post!</p>
+<p>I changed a little &#8220;calculateRem&#8221; function so you have an option to set base font-size:</p>
+<p>@function calculateRem($size, $base-fontsize) {<br />
+  $remSize: $size / $base-fontsize;<br />
+  @return $remSize * 1rem;<br />
+}</p>
+<p>@mixin font-size($size, $base-fontsize) {<br />
+  font-size: $size;<br />
+  font-size: calculateRem($size, $base-fontsize);<br />
+}</p>
+<p>I like it this way, I hope anyone find it usefull.</p>
+<p>Cheers!</p>
+
+		<div class="reply"><a class='comment-reply-link' href='/8-sass-mixins-you-must-have-in-your-toolbox/?replytocom=72137#respond' onclick='return addComment.moveForm( "div-comment-72137", "72137", "respond", "187" )' aria-label='Reply to Wazzo'>Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+  </ol><!-- .comment-list -->
+  <hr />
+  
+  
+  
+  								<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/8-sass-mixins-you-must-have-in-your-toolbox/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://zerosixthree.se/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-describedby="email-notes" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='187' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="684af31ba5" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="87"/></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments -->
+        </footer>
+      </article>
+    </div>
+  </main>
+
+    <footer class="main-footer">
+      <div class="container container-small">
+        <p class="copy">I don't care about attribution, mate. — Use everything you find here under Creative Commons CC0.</p>
+        <p>Find me on Twitter at <a href="http://twitter.com/seb_ekstrom">@seb_ekstrom</a> or by <a href="mailto:seb.ekstrom@gmail.com">mail</a>.</p>
+      </div>
+    </footer>
+    <script type="text/javascript" src="//use.typekit.net/tow0ynr.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="http://zerosixthree.se/wp-content/themes/zerosixthree/static/js/script__0.1.0.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-43453235-1', 'zerosixthree.se');
+      ga('send', 'pageview');
+    </script>
+  <script type='text/javascript' src='http://zerosixthree.se/wp-content/plugins/akismet/_inc/form.js?ver=3.1.5'></script>
+</body>
+</html>

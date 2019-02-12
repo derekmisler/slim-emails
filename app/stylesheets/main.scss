@@ -13,7 +13,7 @@ table { border-collapse: collapse !important;}
 .backgroundTable { margin: 0 auto; padding: 0; width: 100% !important; }
 table td { border-collapse: collapse; }
 .ExternalClass * { line-height: 115%; }
-.container-for-gmail-android { min-width: 600px; }
+.container-for-gmail-android { min-width: 610px; }
 
 /* iOS BLUE LINKS */
 a[x-apple-data-detectors] {
@@ -26,18 +26,21 @@ a[x-apple-data-detectors] {
 }
 /* VARIABLES */
 $background: #edeff0;
-$text_color: #222222;
-$grey_text: #aaaaaa;
+$text_color: #000001;
+$grey_text: #999999;
 $blue: #0d638f;
 $white: #ffffff;
+$green: #35aa47;
+$yellow: #ffb848;
+$orange: #EF611F;
 
-$font: 'Helvetica Neue', Helvetica, sans-serif;
-$font_size: 16px;
-$line_height: $font_size * 1.4;
+$font: sans-serif;
+$font_size: 14px;
+$line_height: floor($font_size * 1.4);
 
-$spacing: 15px;
-$small_spacing: $spacing * .75;
-$large_spacing: $spacing * 2;
+$spacing: $line_height;
+$small_spacing: $font_size;
+$large_spacing: floor($spacing * 2);
 
 $radius: 4px;
 
@@ -55,11 +58,16 @@ body {
   background-color: $background;
 }
 
-td {
+td,
+tr,
+tbody,
+th,
+table {
   font-family: $font;
-  font-size: $font-size;
+  font-size: $font_size;
   color: $text_color;
-  line-height: $line_height;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -69,27 +77,38 @@ a {
 h1, h2, h3 {
   font-family: $font;
   color: $grey_text;
-  font-weight: 300;
+  font-weight: 700;
   margin: 0;
   padding: $small_spacing 0;
 }
 h1 {
-  font-size: $font_size * 2;
+  font-size: floor($font_size * 1.5);
   text-align: center;
 }
 h2 {
-  font-size: $font_size * 1.5;
+  font-size: floor($font_size * 1.4);
+  font-weight: 300;
 }
-p {
+p,
+b,
+strong,
+i,
+em,
+span {
   padding: 0;
   margin: 0;
   font-size: $font_size;
-  line-height: $line_height;
   font-family: $font;
   color: $text_color;
-  text-align: left;
 }
-
+b,
+strong {
+  font-weight: bold;
+}
+i,
+em {
+  font-style: italic;
+}
 .wrapper {
   box-shadow: 0 1px 1px $grey_text;
   margin: 0 auto;
@@ -108,18 +127,20 @@ p {
   text-align: center;
   background-color: $blue;
   border-radius: $radius;
-  padding: $spacing;
+  padding: $small_spacing !important;
   .mobile-button {
     font-size: $font-size;
     color: $white;
-    padding: $spacing;
+    padding: $small_spacing !important;
     font-weight: bold;
   }
 }
 .footer {
-  p, a {
+  text-align: center;
+  p, a, span {
     text-align: center;
     color: $grey_text;
+    font-size: floor($font-size * 1);
   }
 }
 
@@ -129,19 +150,27 @@ p {
   /* ALLOWS FOR FLUID TABLES */
   /* VARIABLES */
   $font_size: 20px;
-  $line_height: $font_size * 1.2;
+  $line_height: floor($font_size * 1.2);
 
   $spacing: 15px;
-  $small_spacing: $spacing * .75;
-  $large_spacing: $spacing * 2;
+  $small_spacing: floor($spacing * .75);
+  $large_spacing: floor($spacing * 2);
 
   $radius: 4px;
+
+  h1 {
+    font-size: floor($font_size * 1.5);
+    text-align: center;
+  }
+  h2 {
+    font-size: floor($font_size * 1.2);
+    font-weight: 300;
+  }
 
   p {
     padding: 0;
     margin: 0;
     font-size: $font_size;
-    line-height: $line_height;
     font-family: $font;
     color: $text_color;
     text-align: left;
@@ -191,9 +220,22 @@ p {
   opacity: 0;
   overflow: hidden;
 }
-.spacer {
-  height: 20px;
+.text-right {text-align: right !important;}
+.grey {color: $grey_text !important;}
+.blue {color: $blue !important;}
+.yellow {color: $yellow !important;}
+.green {color: $green !important;}
+.orange {color: $orange !important;}
+.empty-cell {
+  text-decoration:none;
+  display:inline-block!important;
+  width:0px!important;
+  min-height:0px!important;
+  font-size:0px!important;
+  line-height:0px!important;
+  margin:0px!important;
+  padding:0px!important;
 }
 
 /* ANDROID CENTER FIX */
-div[style*="margin: $font-size 0;"] { margin: 0; }
+div[style*="margin: 16px 0;"] { margin: 0; }
